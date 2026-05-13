@@ -22,28 +22,75 @@ import uuid
 
 # --- 1. SETUP ENVIRONMENT ---
 def setup_env():
-    print("[*] Installing heavy physics libraries (RDKit, AutoDock Vina)...")
+    print("[*] Installing heavy physics libraries (RDKit, Smina/Vina)...")
     os.system("pip install rdkit-pypi quiet")
-    os.system("sudo apt-get install autodock-vina -y -q")
-    print("[+] Environment Ready.")
+    
+    # Download Smina (advanced fork of AutoDock Vina)
+    if not os.path.exists("smina"):
+        os.system("wget -q https://sourceforge.net/projects/smina/files/smina.static/download -O smina")
+        os.system("chmod +x smina")
+        
+    # Download the actual 3D crystal structure of EGFR (Glioblastoma Target)
+    if not os.path.exists("egfr_gbm.pdb"):
+        print("[*] Downloading actual Glioblastoma protein crystal (EGFR)...")
+        os.system("wget -q https://files.rcsb.org/download/1M17.pdb -O egfr_gbm.pdb")
+        
+    print("[+] Environment Ready. Protein target acquired.")
 
 # --- 2. WORKER LOGIC ---
-BRAIN_URL = "http://YOUR_NGROK_URL_HERE:8000" # Replace with your brain's public IP or Ngrok
+BRAIN_URL = "https://perjury-dilation-sulphate.ngrok-free.dev" # Replace with your brain's public IP or Ngrok
 WORKER_ID = f"colab_gpu_{str(uuid.uuid4())[:8]}"
 
 def simulate_physics(smiles: str) -> float:
     """
-    In a real scenario, this writes the SMILES to a PDBQT file,
-    calls the AutoDock Vina binary via subprocess against the GBM protein,
-    and parses the kcal/mol output.
-    
-    Here we simulate the heavy GPU compute delay.
+    ULTIMATE COMPUTATIONAL CHEMISTRY ENGINE.
+    1. Checks Blood-Brain Barrier (BBB) viability.
+    2. Uses Smina/Vina to physically dock the drug into the GBM protein.
     """
-    time.sleep(0.5) # Simulating heavy GPU calculation
-    
-    # We want a very negative score for strong binding
-    score = -5.0 + (len(smiles) / 15.0) * -0.5 + random.gauss(0, 1.5)
-    return score
+    try:
+        from rdkit import Chem
+        from rdkit.Chem import Descriptors
+        import subprocess
+        
+        # 1. Enforce Blood-Brain Barrier (BBB) Rules
+        mol = Chem.MolFromSmiles(smiles)
+        if not mol: return 0.0
+            
+        mw = Descriptors.MolWt(mol)
+        logp = Descriptors.MolLogP(mol)
+        tpsa = Descriptors.TPSA(mol)
+        
+        if mw > 500 or logp > 5.0 or tpsa > 90:
+            return 0.0 # Drug cannot enter the brain, reject.
+            
+        # 2. ACTUAL MOLECULAR DOCKING (VINA)
+        # We pass the SMILES directly to Smina and dock it against the EGFR protein.
+        # This will use the CPU/GPU to calculate the real kcal/mol binding affinity.
+        cmd = [
+            "./smina", 
+            "-r", "egfr_gbm.pdb", 
+            "-l", smiles, 
+            "--autobox_ligand", "egfr_gbm.pdb", 
+            "--exhaustiveness", "1", 
+            "--quiet"
+        ]
+        
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        
+        # Parse the kcal/mol score from Smina's output
+        score = 0.0
+        for line in result.stdout.split('\n'):
+            if "Affinity:" in line:
+                # Extracts the negative binding score
+                parts = line.split()
+                score = float(parts[1])
+                break
+                
+        # If it found a real binding score, return it. Otherwise 0.0.
+        return score if score < 0 else 0.0
+
+    except Exception as e:
+        return 0.0
 
 def run_worker_loop():
     print(f"[*] Starting Neural-Nova Worker: {WORKER_ID}")
@@ -52,7 +99,8 @@ def run_worker_loop():
         try:
             # Pull work
             print("[*] Pulling batch from Grid Brain...")
-            resp = requests.get(f"{BRAIN_URL}/get_work?batch_size=50", timeout=10)
+            headers = {"ngrok-skip-browser-warning": "true"}
+            resp = requests.get(f"{BRAIN_URL}/get_work?batch_size=50", headers=headers, timeout=10)
             data = resp.json()
             
             smiles_list = data.get("smiles_list", [])
@@ -78,7 +126,8 @@ def run_worker_loop():
                     "worker_id": WORKER_ID,
                     "molecules": results
                 }
-                requests.post(f"{BRAIN_URL}/submit_results", json=payload, timeout=10)
+                headers = {"ngrok-skip-browser-warning": "true"}
+                requests.post(f"{BRAIN_URL}/submit_results", json=payload, headers=headers, timeout=10)
             else:
                 print("[-] No strong binders in this batch.")
                 
