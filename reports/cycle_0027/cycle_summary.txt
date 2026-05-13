@@ -1,0 +1,25 @@
+======================================================================
+NEURAL-NOVA v2 — CYCLE 27 SUMMARY
+======================================================================
+
+Molecules Generated:   71
+Passed Screening:      30
+Simulated in Twin:     0
+Reports Generated:     5
+Best Composite Score:  0.5613
+Target Used:           PIK3CA
+Elapsed Time:          13.3s
+
+--- TOP CANDIDATES THIS CYCLE ---
+   1. cn1cc(Fl)Fcc3                               score=0.5613  BBB=0.965
+   2. Cn1nncocn1                                  score=0.5205  BBB=0.989
+   3. Cn1nncc(F)ccc3                              score=0.5205  BBB=0.947
+   4. cn1c(Fl)ccc3                                score=0.5084  BBB=0.942
+   5. cn1ncc(F)cc(F)cc1                           score=0.5048  BBB=0.911
+   6. Cn1nncccnc1                                 score=0.5006  BBB=0.981
+   7. Cn1(c3cccc3)cc1                             score=0.4981  BBB=0.958
+   8. Cn11(F)cccc1                                score=0.4962  BBB=0.902
+   9. CC(C)cc1ccccc1                              score=0.4959  BBB=0.969
+  10. c1cc(Fll)cccl                               score=0.4958  BBB=0.986
+
+======================================================================

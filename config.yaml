@@ -1,0 +1,157 @@
+# ─────────────────────────────────────────────────────────────
+# Neural-Nova v2 — Autonomous GBM Drug Discovery Engine
+# ─────────────────────────────────────────────────────────────
+
+project:
+  name: "Neural-Nova v2"
+  data_dir: "./data"
+  reports_dir: "./reports"
+  models_dir: "./models"
+  logs_dir: "./logs"
+
+# ── Data Harvesting ────────────────────────────────────────
+harvester:
+  tcga:
+    project_id: "TCGA-GBM"
+    gdc_api: "https://api.gdc.cancer.gov"
+    max_cases: 700          # all available GBM cases
+    data_types:
+      - "Gene Expression Quantification"
+      - "Masked Somatic Mutation"
+      - "Methylation Beta Value"
+    cache_dir: "./data/tcga"
+
+  pdb:
+    api_url: "https://data.rcsb.org/rest/v1"
+    targets:
+      EGFR_wt:   { pdb_ids: ["1NQL", "3POZ"],       mutation: null }
+      EGFR_vIII: { pdb_ids: ["2JIT"],                mutation: "del2-7" }
+      IDH1_R132H:{ pdb_ids: ["3INM", "3MAP"],        mutation: "R132H" }
+      MGMT:      { pdb_ids: ["1EH6", "1QNT"],        mutation: null }
+      VEGFR2:    { pdb_ids: ["4AGD", "3VHE"],         mutation: null }
+      PDL1:      { pdb_ids: ["5C3T", "5JDR"],         mutation: null }
+      TfR1:      { pdb_ids: ["1CX8"],                 mutation: null }
+      BCL2:      { pdb_ids: ["1G5M"],                 mutation: null }
+      mTOR:      { pdb_ids: ["4DRH"],                 mutation: null }
+    cache_dir: "./data/pdb_structures"
+
+  zinc:
+    base_url: "https://zinc20.docking.org/substances"
+    tranches_url: "https://zinc20.docking.org/tranches/download"
+    filters:
+      mw_min: 200
+      mw_max: 450
+      logp_min: 0.5
+      logp_max: 4.0
+      max_molecules: 50000    # start small, expand later
+    cache_dir: "./data/zinc_tranches"
+
+  chembl:
+    api_url: "https://www.ebi.ac.uk/chembl/api/data"
+    gbm_targets:
+      - "CHEMBL203"    # EGFR
+      - "CHEMBL3712"   # IDH1
+      - "CHEMBL1957"   # VEGFR2
+      - "CHEMBL5102"   # PD-L1
+    max_compounds: 20000
+    cache_dir: "./data/chembl"
+
+  pubmed:
+    api_url: "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
+    search_terms:
+      - "glioblastoma drug discovery"
+      - "GBM targeted therapy"
+      - "blood brain barrier drug delivery glioma"
+      - "glioblastoma immunotherapy"
+    max_papers: 500
+    cache_dir: "./data/literature"
+
+  clinicaltrials:
+    api_url: "https://clinicaltrials.gov/api/v2/studies"
+    condition: "Glioblastoma"
+    max_studies: 500
+    cache_dir: "./data/literature"
+
+# ── Screening ──────────────────────────────────────────────
+screener:
+  rdkit_filters:
+    lipinski: true
+    veber: true
+    pains: true
+    bbb_mw_max: 450
+    bbb_tpsa_max: 90
+    bbb_logp_range: [0.5, 4.0]
+    bbb_hbd_max: 3
+
+  docking:
+    tool: "vina"                # AutoDock Vina
+    exhaustiveness: 16
+    num_modes: 9
+    energy_range: 3.0
+    score_threshold: -7.0       # kcal/mol — keep below this
+
+  md_simulation:
+    enabled: false              # enable when GPU available
+    engine: "openmm"
+    duration_ns: 10
+    temperature_k: 310
+    timestep_fs: 2.0
+
+  admet:
+    use_api: true               # use free web APIs
+    fallback_local: true        # use local sklearn models if API fails
+    bbb_threshold: 0.5
+    toxicity_threshold: 0.3
+
+# ── Molecule Generation ────────────────────────────────────
+generator:
+  strategy: "hybrid"            # "screening" | "denovo" | "fragment" | "hybrid"
+  denovo:
+    model: "lstm"               # start with LSTM, upgrade to transformer later
+    vocab: "smiles"
+    max_length: 80
+    temperature: 0.8
+    batch_size: 64
+  fragment:
+    known_scaffolds:
+      - "O=c1[nH]c(=O)n(C)c1N"          # temozolomide core
+      - "c1ccc(NC(=O)c2ccccn2)cc1"       # kinase inhibitor scaffold
+      - "c1ccc(-c2cc3ccccc3o2)cc1"        # benzofuran scaffold
+    max_modifications: 5
+
+# ── Digital Twin ───────────────────────────────────────────
+twin:
+  grid_size: 100                # voxels per axis (100^3 = 1M voxels)
+  resolution_um: 50             # microns per voxel
+  simulation_days: 60
+  cell_types:
+    gsc:     { doubling_h: 48,  self_renewal: 0.30, initial_fraction: 0.10 }
+    tumor:   { doubling_h: 22,  self_renewal: 0.00, initial_fraction: 0.55 }
+    macro:   { m2_bias: 0.60,   initial_fraction: 0.20 }
+    tcell:   { exhaustion_rate: 0.01, initial_fraction: 0.05 }
+    endo:    { initial_fraction: 0.05 }
+    astro:   { initial_fraction: 0.05 }
+  drug:
+    dosing_interval_h: 24
+    treatment_start_day: 7
+
+# ── Self-Improving Loop ────────────────────────────────────
+loop:
+  max_cycles: 500
+  molecules_per_cycle: 500
+  top_k_screen: 50
+  top_k_simulate: 10
+  top_k_report: 5
+  retrain_every: 5              # retrain generative model every N cycles
+  exploration_fraction: 0.20    # 20% random exploration
+  convergence_patience: 50
+  convergence_delta: 0.001
+
+# ── Reporting ──────────────────────────────────────────────
+reports:
+  format: "pdf"
+  include_structure_image: true
+  include_docking_pose: true
+  include_admet_table: true
+  include_twin_plots: true
+  include_literature: true

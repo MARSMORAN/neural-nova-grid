@@ -1,0 +1,25 @@
+======================================================================
+NEURAL-NOVA v2 — CYCLE 10 SUMMARY
+======================================================================
+
+Molecules Generated:   100
+Passed Screening:      30
+Simulated in Twin:     0
+Reports Generated:     5
+Best Composite Score:  0.5193
+Target Used:           PIK3CA
+Elapsed Time:          8.1s
+
+--- TOP CANDIDATES THIS CYCLE ---
+   1. Cc1n2                                       score=0.5193  BBB=0.981
+   2. c1c(F)cc(C)c1cc1                            score=0.5102  BBB=0.950
+   3. c1ncc(F)cc(-c32)ccc1                        score=0.5041  BBB=0.947
+   4. c1coco1(C)C1CCCCC                           score=0.5016  BBB=0.915
+   5. CC(CC)c1cccc2                               score=0.4976  BBB=0.989
+   6. c1ncc(F)c(F)cc1                             score=0.4893  BBB=0.942
+   7. c1cc(-c3cc3ccc3c32)cc1                      score=0.4833  BBB=0.901
+   8. c1cc(C(F)(F)F)cc3c1                         score=0.4804  BBB=0.803
+   9. c1cccon1                                    score=0.4791  BBB=0.993
+  10. c1cc(-c3cc3ccc3c2)cc1                       score=0.4766  BBB=0.965
+
+======================================================================

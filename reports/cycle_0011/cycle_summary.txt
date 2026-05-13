@@ -1,0 +1,25 @@
+======================================================================
+NEURAL-NOVA v2 — CYCLE 11 SUMMARY
+======================================================================
+
+Molecules Generated:   100
+Passed Screening:      30
+Simulated in Twin:     0
+Reports Generated:     5
+Best Composite Score:  0.5161
+Target Used:           CDK4
+Elapsed Time:          11.6s
+
+--- TOP CANDIDATES THIS CYCLE ---
+   1. c1cocn1                                     score=0.5161  BBB=0.993
+   2. c1c(Fo(F)F)(F)ccc1                          score=0.5080  BBB=0.799
+   3. c1cccnc1                                    score=0.4948  BBB=0.994
+   4. CC(C)Ccc1ccccc1                             score=0.4934  BBB=0.979
+   5. c1oc(F)cc(N)c1                              score=0.4896  BBB=0.912
+   6. c1ccoc11(C)C1CCCCC                          score=0.4867  BBB=0.945
+   7. c1cc(F)cc(-c3)ccc1                          score=0.4846  BBB=0.964
+   8. c1cc(F)cc(-)c1                              score=0.4824  BBB=0.967
+   9. Cc12(F)Nc(F)cc1                             score=0.4816  BBB=0.851
+  10. c1cncc(-)cc(c1)cc1                          score=0.4736  BBB=0.951
+
+======================================================================

@@ -1,0 +1,25 @@
+======================================================================
+NEURAL-NOVA v2 — CYCLE 2 SUMMARY
+======================================================================
+
+Molecules Generated:   142
+Passed Screening:      30
+Simulated in Twin:     0
+Reports Generated:     5
+Best Composite Score:  0.4947
+Target Used:           EGFR
+Elapsed Time:          19.3s
+
+--- TOP CANDIDATES THIS CYCLE ---
+   1. c1ccocc1                                    score=0.4947  BBB=0.994
+   2. c1ccncc1                                    score=0.4608  BBB=0.987
+   3. c1cc(F)cc(N)c1                              score=0.4557  BBB=0.974
+   4. c1cc2c(=O)c2ccc(F)cc(F)c1                   score=0.4403  BBB=0.755
+   5. c1ccncc1(C)C(=O)NC1                         score=0.4244  BBB=0.876
+   6. c1ccc2NC(=O)c1ccncc1                        score=0.4220  BBB=0.928
+   7. Cn1n1nncnc(c1)C(=O)N                        score=0.4213  BBB=0.764
+   8. CC(OC)Nc1ccc(C)cc1                          score=0.4193  BBB=0.661
+   9. c1ccc(-c2cc3cccccc32)cc1                    score=0.4082  BBB=0.938
+  10. c1ccc(C(F)(F)F)cc(1)c1cc1                   score=0.4001  BBB=0.736
+
+======================================================================

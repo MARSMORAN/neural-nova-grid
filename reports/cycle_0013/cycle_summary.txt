@@ -1,0 +1,25 @@
+======================================================================
+NEURAL-NOVA v2 — CYCLE 13 SUMMARY
+======================================================================
+
+Molecules Generated:   100
+Passed Screening:      30
+Simulated in Twin:     0
+Reports Generated:     5
+Best Composite Score:  0.5247
+Target Used:           PDGFRA
+Elapsed Time:          12.3s
+
+--- TOP CANDIDATES THIS CYCLE ---
+   1. c1cco-o1                                    score=0.5247  BBB=0.993
+   2. c1cc(Cl)cc(C)c1cc1                          score=0.5127  BBB=0.979
+   3. c1ccc(-o32)ccc1                             score=0.5120  BBB=0.986
+   4. c1co(F)cc(F)cc1                             score=0.4965  BBB=0.910
+   5. CC(CC)Cc1ccccc1                             score=0.4961  BBB=0.940
+   6. c1cc(-c3)ccc1                               score=0.4957  BBB=0.984
+   7. c1cc(-c3c3ccc3l)cc1                         score=0.4937  BBB=0.938
+   8. c1oc(F)cc(-)cc1                             score=0.4902  BBB=0.960
+   9. c1cco(F)c1                                  score=0.4867  BBB=0.983
+  10. c1cc(Co(F)c3ccc3)cc1                        score=0.4866  BBB=0.976
+
+======================================================================

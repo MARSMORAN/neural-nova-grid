@@ -1,0 +1,1202 @@
+[
+  {
+    "file_id": "d4649bc7-09d2-4d90-bafd-0bec72429b00",
+    "file_name": "1ccc2b22-7f6c-4973-a6fa-f2c4d6be6dba.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4235696,
+    "case_id": "3ed101b5-0007-4957-a25d-4cf43bde08b6"
+  },
+  {
+    "file_id": "77c261f0-384c-4906-a57e-7c3b35c17041",
+    "file_name": "44aa45ef-4bcd-47eb-a2ef-68b614d00a51.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4257560,
+    "case_id": "3f960d3b-a58c-43d0-a8a4-f3555b399c9d"
+  },
+  {
+    "file_id": "99ff2016-a97a-4142-b70a-1bb59d6264e9",
+    "file_name": "967e6f4b-8c6b-4498-87c2-330b2c174061.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4230271,
+    "case_id": "3f960d3b-a58c-43d0-a8a4-f3555b399c9d"
+  },
+  {
+    "file_id": "afbd1975-263b-404b-a738-886bf25c0223",
+    "file_name": "2426bdbe-9a09-4ea1-b5eb-1ecb2c492898.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4219473,
+    "case_id": "407849a8-8447-4ede-a9d1-c1dfb535222e"
+  },
+  {
+    "file_id": "444a2332-9e52-4cf8-94d9-07a8b829633e",
+    "file_name": "d2b6a1a6-ed16-4374-8b28-912237ed87c2.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4242921,
+    "case_id": "41685c5a-a548-483a-8a20-305ad8d61771"
+  },
+  {
+    "file_id": "07c46064-9fb9-4aad-9289-187d156c9d27",
+    "file_name": "520c0e78-f0a3-4e46-8c8e-00cf654e100d.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4245745,
+    "case_id": "42e92d73-29eb-4508-a653-9b77f36021c0"
+  },
+  {
+    "file_id": "b7a15790-9999-4fd2-b327-9584e1445c1f",
+    "file_name": "229e6793-e11e-46c8-9307-1847243a311c.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4237341,
+    "case_id": "4a85a43b-4dbc-4081-b552-df06eef1ad80"
+  },
+  {
+    "file_id": "9813657d-da8b-4b27-9815-4b7d7b4bbac4",
+    "file_name": "1f027bee-5316-4d9f-a566-41890da18493.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4249092,
+    "case_id": "4644a15f-3115-4f27-86b2-b092419431e1"
+  },
+  {
+    "file_id": "ef37e9a2-853d-4697-8ce4-beb6899e3ff1",
+    "file_name": "e3ca6a99-2907-4509-a416-eb7362b0b606.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4223569,
+    "case_id": "4644a15f-3115-4f27-86b2-b092419431e1"
+  },
+  {
+    "file_id": "2bac85df-4900-41cd-a2ae-e33db7abd9d1",
+    "file_name": "2c3f2491-4d3b-41da-9866-94644fc8d102.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4247226,
+    "case_id": "38acdfc8-8abc-4d89-a68b-58c493650b48"
+  },
+  {
+    "file_id": "a7260181-c266-427f-abba-4aa318f1710c",
+    "file_name": "69804564-72f3-443e-a45e-add43d917b2c.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4241176,
+    "case_id": "5327e899-a20d-4571-8236-98454bad574e"
+  },
+  {
+    "file_id": "072f2d4e-db08-40c2-891a-9199e47fcac3",
+    "file_name": "ce5fb607-99c5-457f-9022-df38b540fce6.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4236559,
+    "case_id": "3a3fc890-1985-4353-861b-dc3abfb364b1"
+  },
+  {
+    "file_id": "e676c661-cae3-4755-a90f-e632a3d82850",
+    "file_name": "113df549-f143-4c50-8e18-7c2159bda4eb.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4252833,
+    "case_id": "5252c0b7-be05-4c0c-a8ac-afe9ad459489"
+  },
+  {
+    "file_id": "cf92132f-edaf-47dc-9469-69f3cef16737",
+    "file_name": "7753deb5-3885-44ca-be8b-8ff6ab9d7e30.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4240821,
+    "case_id": "543c0a7d-ccd7-4b8d-98fb-eabec806231d"
+  },
+  {
+    "file_id": "6835ae68-2f18-4239-ac8c-6a8291101e45",
+    "file_name": "a4e0b059-6e1e-4e90-b55a-4e043e6ed051.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4239866,
+    "case_id": "3caf009f-d9e0-4c57-b1d9-8eb59fc833bd"
+  },
+  {
+    "file_id": "b7196540-a319-41a0-befd-c363e511ac1d",
+    "file_name": "0b53e868-b960-466d-b435-f41a9a8ef34b.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4219419,
+    "case_id": "5a86d9f1-d38d-4b78-9a23-c7855a20ca2d"
+  },
+  {
+    "file_id": "1b8cc228-a020-4418-be03-ad409d781728",
+    "file_name": "aab4bee0-b7a4-4671-b7e3-e11f11abe0e7.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4220583,
+    "case_id": "34f216fb-09dc-48af-9e09-7d12cc07c1f7"
+  },
+  {
+    "file_id": "7a7637d0-110f-4809-a79f-9eead03c762b",
+    "file_name": "db0f3e8d-4a8e-48c7-8903-3dfba46d8401.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4249390,
+    "case_id": "350232cb-b9ba-465b-be9a-81afbc6a92e9"
+  },
+  {
+    "file_id": "f2eb8d3a-ee6e-4180-921d-0ef8f7d1ead5",
+    "file_name": "1435785d-a1c3-4f05-a369-74a2134d5986.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4226164,
+    "case_id": "352768f9-3ce1-419c-beef-6515c78f5d7a"
+  },
+  {
+    "file_id": "dbcf47dd-1c8d-4736-9ea2-08c03a94b298",
+    "file_name": "78484ab5-e8f8-4029-b5b2-63629a949e2f.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4224344,
+    "case_id": "5ef9486a-aeff-421d-b620-03ef119d85a5"
+  },
+  {
+    "file_id": "9d938732-9077-4d77-ba5b-e8354babf909",
+    "file_name": "d745289b-15ab-4923-9590-774b20d8b885.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4252424,
+    "case_id": "3726b315-6cf8-49a3-a581-b7f3f4ca6e16"
+  },
+  {
+    "file_id": "c96554bf-ae42-4ec0-93fd-7c2ab01d19f0",
+    "file_name": "80f616bc-e28d-43b2-b3cb-606962c0d22b.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4233401,
+    "case_id": "620282f9-f932-4335-9c7d-ece53dcaf7a1"
+  },
+  {
+    "file_id": "03fc636b-9e3d-42ea-88cf-8081539a9859",
+    "file_name": "58d714ce-bdb7-4365-b3f9-a5464237b1d4.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4239581,
+    "case_id": "652a39f0-c539-4303-bedc-f0d7f4669d9f"
+  },
+  {
+    "file_id": "3449e073-b0f2-4498-b9db-18e8593ef580",
+    "file_name": "2e33127c-779d-4f05-bbae-7893b9d27364.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4235540,
+    "case_id": "66afd908-0c76-469e-abc3-89563de338c6"
+  },
+  {
+    "file_id": "bec610b2-9082-429d-8aef-6cbf3bb7a020",
+    "file_name": "4a44bd40-1141-4524-a35f-f29ee37f6c63.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4236301,
+    "case_id": "69d56f2d-6924-409b-9d1e-c8d69b400270"
+  },
+  {
+    "file_id": "69f7dc91-32d1-4359-850f-860aab36e433",
+    "file_name": "0ce1eb02-a90c-484a-b861-c359562d3be1.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4249599,
+    "case_id": "6c5154d2-af36-492f-b520-d925528824e4"
+  },
+  {
+    "file_id": "c5edc8d9-bae8-4841-802c-919dc0d4c055",
+    "file_name": "9b1f39e2-a587-4fde-afd2-e0808a7766c1.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4247998,
+    "case_id": "6ccd57e5-9215-46fa-b3be-e408a0f424dc"
+  },
+  {
+    "file_id": "f982722f-ae1d-4b7a-b445-0646517acb0f",
+    "file_name": "5b1cc683-d363-4cb8-b9b2-050c3c541858.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4244841,
+    "case_id": "722f462d-f939-4bc1-aae4-8f78b1335a87"
+  },
+  {
+    "file_id": "9240b811-4132-4ca4-b44e-7e672b594657",
+    "file_name": "979a75fb-49bd-48e4-b7b1-1391a67726cb.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4192660,
+    "case_id": "72f88d18-03be-4b51-9f4a-1151521b7292"
+  },
+  {
+    "file_id": "0d0543f2-195a-4ab8-8331-a1b57fc673dc",
+    "file_name": "c247006d-7749-4838-9bfb-1388e089450d.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4246635,
+    "case_id": "72f88d18-03be-4b51-9f4a-1151521b7292"
+  },
+  {
+    "file_id": "155e74da-ebd4-4f87-ac74-7bf9fd74644f",
+    "file_name": "6b59c7e7-11f7-4326-a849-2e1a6bb9f3e7.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4218805,
+    "case_id": "7338e476-10ff-444a-a16f-429d28355f65"
+  },
+  {
+    "file_id": "9ac00a37-7f08-4c9f-ab77-4019a05c5083",
+    "file_name": "e08e8902-f526-449f-b645-d29b06d175dd.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4244893,
+    "case_id": "7340f325-579f-4b90-96aa-3a7b362129ca"
+  },
+  {
+    "file_id": "54bbc769-1001-4bdc-991a-e1ef0b969aef",
+    "file_name": "6571f6d5-963a-4ff7-9174-2b4d61c11069.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4248054,
+    "case_id": "7751fc13-ec33-4057-965d-3b2ac6183344"
+  },
+  {
+    "file_id": "1bc3c302-0e49-4944-b3ce-7d6e6f846493",
+    "file_name": "45ab4192-f1bb-46cd-8e85-c2341d67642f.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4245339,
+    "case_id": "7a650a2c-bc3f-4e0c-820e-4f492977107b"
+  },
+  {
+    "file_id": "ba9afa8e-405c-49b7-bc66-8ab1af1f942e",
+    "file_name": "dad61e18-e3f1-4beb-b3c3-ae434e35af2d.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4242874,
+    "case_id": "74139255-a635-4c87-814d-3dd04ed630a8"
+  },
+  {
+    "file_id": "0237d4e6-241d-4fb5-a59b-078bd4bd4b2d",
+    "file_name": "39bc453b-67d2-4059-bbaf-fa98dc9d2595.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4223522,
+    "case_id": "7a650a2c-bc3f-4e0c-820e-4f492977107b"
+  },
+  {
+    "file_id": "9916e085-1027-4c91-9729-93dc36b71c86",
+    "file_name": "2c25aa49-879a-4023-80b4-84df717dc537.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4236023,
+    "case_id": "74139255-a635-4c87-814d-3dd04ed630a8"
+  },
+  {
+    "file_id": "d6278bca-8b01-4761-8457-6a67c63c78b1",
+    "file_name": "0669db2c-5724-4d83-aac7-483708e470c1.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4237874,
+    "case_id": "7eb1d526-923d-4b31-b8be-27d83b3dd025"
+  },
+  {
+    "file_id": "f241eee0-28ea-4700-ba91-d3d50c2f7e48",
+    "file_name": "051dc36f-47e2-4d77-b9b9-c5f2d315f5f3.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4233696,
+    "case_id": "79a68b32-29a3-47bf-9b2b-643ec7323d73"
+  },
+  {
+    "file_id": "689956e8-e5b8-4d66-a83d-9fc0c82fc2c6",
+    "file_name": "05d2774d-cb3e-4485-9825-c04d4ca44bb6.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4229588,
+    "case_id": "7fe37feb-e205-4524-8c98-1f9ac5fe0700"
+  },
+  {
+    "file_id": "90bb68a5-2311-4e19-80d4-35bf447456cd",
+    "file_name": "79431769-1471-4ae8-b324-3f02d1a25507.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4251044,
+    "case_id": "863d58e7-91c2-4602-98ed-c6c6e0859566"
+  },
+  {
+    "file_id": "2e4989d4-fde3-4da7-b656-5e07dcf28b14",
+    "file_name": "7b980b35-f9d6-4d92-bd0d-cf152156a2d8.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4237575,
+    "case_id": "82a3f532-ae59-4d06-9bfc-e5e7519c0a33"
+  },
+  {
+    "file_id": "9a3e22cb-36b6-43ae-8f5c-b991f32c4732",
+    "file_name": "9cee9b1d-e8ee-4f8e-be85-c96dac6138b3.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4218671,
+    "case_id": "884f867b-4a8b-4b67-8fe4-ab3f068be84e"
+  },
+  {
+    "file_id": "b4abde15-98d3-4e78-9170-6c372de5c0f3",
+    "file_name": "a0cfa49e-93dd-48c9-8a9a-c3dfdb081ae4.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4252362,
+    "case_id": "8df94420-c736-4a36-b001-5dbe3dff17f0"
+  },
+  {
+    "file_id": "4bc70225-3511-4571-8029-7ac499e60742",
+    "file_name": "ec1ada4a-34c5-4d5f-a75f-25fc45d05a28.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4254634,
+    "case_id": "93ed7a2b-b0cb-4a84-871f-5c34a0b6a640"
+  },
+  {
+    "file_id": "db17edfa-a85d-4498-8203-83d9949c3483",
+    "file_name": "209797f2-6e12-4f02-bea7-fd559305fad4.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4221558,
+    "case_id": "98e2f2ec-bdcd-490a-bf45-600e3b6c7491"
+  },
+  {
+    "file_id": "c672926f-4617-4b3b-a8a9-0195b421a222",
+    "file_name": "d561fbb1-a288-4a37-98de-65247968fa40.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4242309,
+    "case_id": "9b9654c9-5a64-4a8e-b1f0-987437e6012e"
+  },
+  {
+    "file_id": "3e56e05a-a920-4bed-a863-8d968ae8909b",
+    "file_name": "15470aa1-dc19-4270-a09d-4341c7f174bb.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4254012,
+    "case_id": "97686ab2-3b7e-4b21-9bf3-9a5a01709e04"
+  },
+  {
+    "file_id": "00426c02-8fec-4862-92e6-876a81533b9e",
+    "file_name": "54c6eff1-866a-4b26-9778-6b085fc25123.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4231886,
+    "case_id": "9d1d9ae5-4640-4060-a207-c9c5b0e905e1"
+  },
+  {
+    "file_id": "9278a510-405e-4dd0-a083-a368234581ad",
+    "file_name": "f4e07a40-74e5-4c35-ae98-7ca190fff6c9.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4247710,
+    "case_id": "a210407e-b7de-4e27-84b2-9dcc5f9e6e63"
+  },
+  {
+    "file_id": "9af0ac1c-2106-413b-bd64-c1d13db34c27",
+    "file_name": "a6df72e4-5522-4711-8255-c9d6ff860f40.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4248946,
+    "case_id": "98dd5ea6-8d40-4963-bbae-2d37001d71c8"
+  },
+  {
+    "file_id": "2458c146-74ef-4c2a-b2b4-1bb6ab5292a9",
+    "file_name": "fd0dc2d4-4a8e-4f37-8e1c-320193ace083.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4242748,
+    "case_id": "a589e2dc-7649-492c-9569-592698acaa6f"
+  },
+  {
+    "file_id": "3561d728-6997-436d-8b40-e2988013e1f3",
+    "file_name": "7775f83b-5a91-4ced-83dd-c6c419c110ab.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4256406,
+    "case_id": "9f004b8a-f202-419d-a4d8-01f9430eaca5"
+  },
+  {
+    "file_id": "863e6257-809d-48ea-a7d4-ef9fa030124d",
+    "file_name": "7a5f6106-e991-4fdb-ae52-61099bd8c3b9.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4246317,
+    "case_id": "a2338b30-f511-4163-af3b-1e4a40ff00e1"
+  },
+  {
+    "file_id": "e4774df3-14d7-43e1-8d6e-59e3530f157b",
+    "file_name": "4852a0bd-7339-45c7-abab-2b17b4792106.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4236854,
+    "case_id": "a262928c-e20a-4c02-8114-1227e05c43e1"
+  },
+  {
+    "file_id": "6f1de6d4-722d-46de-a586-593224079064",
+    "file_name": "336b678c-b044-4b16-aa80-82c9ab769326.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4232613,
+    "case_id": "a597bfa8-8c4d-4f8e-9d85-8a9fdc2c56ff"
+  },
+  {
+    "file_id": "89dad61a-6e26-4fd2-b277-1e438092af86",
+    "file_name": "664dc12a-5d76-4efb-bb33-f0f58c937062.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4241098,
+    "case_id": "a262928c-e20a-4c02-8114-1227e05c43e1"
+  },
+  {
+    "file_id": "16b32013-0291-458e-b637-f73ccbaee84f",
+    "file_name": "ee1a4754-896c-4f5d-bd4a-a7754f84abad.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4239507,
+    "case_id": "aa7ad106-eadc-489e-83b2-5698652434ea"
+  },
+  {
+    "file_id": "22085d53-b816-4c33-b1ef-6f199775f39c",
+    "file_name": "d0d080e3-b40d-466e-8b51-58ee3f463667.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4240457,
+    "case_id": "a28b256e-e085-467d-bdba-5c39718012d7"
+  },
+  {
+    "file_id": "9df853fe-f193-4dd7-a6dc-095262f2e03a",
+    "file_name": "034c42f2-fee6-4196-9c02-24589ce01071.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4239158,
+    "case_id": "aad2c954-39a4-4ef3-9940-e754619007a4"
+  },
+  {
+    "file_id": "617be06c-8001-41ab-be2c-2a4050fe6ccc",
+    "file_name": "ff14b89f-5e47-49f2-9499-8d5224f067dc.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4239993,
+    "case_id": "43d98306-8b1f-4840-a1a0-146ba0c36400"
+  },
+  {
+    "file_id": "66930c94-a85f-47a2-9829-5eeebd0448f9",
+    "file_name": "36fa95b5-2cf1-4033-91ee-832547ff52fd.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4249348,
+    "case_id": "43d89926-2378-4498-bfba-6d6624d951b4"
+  },
+  {
+    "file_id": "3fef7878-8d16-44c6-8d24-a6de90b66747",
+    "file_name": "0a80d60d-df15-4474-92f9-97f5be07e180.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4248342,
+    "case_id": "44ef426e-b67d-4b49-80a3-86681b9abf1a"
+  },
+  {
+    "file_id": "bc068ded-2a95-4bd9-a9c9-7016d7e748a8",
+    "file_name": "da7d327b-1022-4ffc-9ed8-8b4413209ce4.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4243841,
+    "case_id": "44ef426e-b67d-4b49-80a3-86681b9abf1a"
+  },
+  {
+    "file_id": "2c257408-2e69-4424-9fb2-6512f4d88b6b",
+    "file_name": "19f6db33-bd74-44aa-9f00-c31903e88abf.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4249316,
+    "case_id": "456bcab3-165d-456f-94e3-f34f81a61d2e"
+  },
+  {
+    "file_id": "1a23f004-dde1-4a0e-8991-0686182e92a5",
+    "file_name": "17eedf5a-cad4-460d-bf28-9539ed131e5a.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4248827,
+    "case_id": "456bcab3-165d-456f-94e3-f34f81a61d2e"
+  },
+  {
+    "file_id": "fb49f5f7-5576-4670-8918-47d0997a6f30",
+    "file_name": "b5402a87-05a5-421f-be4c-469c34e4bb81.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4246319,
+    "case_id": "4b43da9d-60ee-4269-b44d-d92c034b844c"
+  },
+  {
+    "file_id": "9fe6ce79-5cf5-47b8-8379-5e67ab35892e",
+    "file_name": "73083339-9672-4072-aa87-0c94240f478a.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4232161,
+    "case_id": "4b43da9d-60ee-4269-b44d-d92c034b844c"
+  },
+  {
+    "file_id": "b5b955dc-8bcc-4465-aee2-f302783d9ac8",
+    "file_name": "671d7eb7-92fc-4318-be85-e48f7d868225.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4229541,
+    "case_id": "4c070166-025e-49b7-b4d0-fe25c8a355b1"
+  },
+  {
+    "file_id": "21b8a64f-800c-45bc-b7a4-a2e666330549",
+    "file_name": "71390b5a-ecd0-475f-8582-8bfb47bb844c.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4245636,
+    "case_id": "46bfebf4-0ef6-4348-81dc-d7d3cb52c08f"
+  },
+  {
+    "file_id": "69531d59-6508-4074-a63a-27b047121681",
+    "file_name": "03ddea6f-d377-4e2a-a59d-91d5c5b6e4ed.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4244750,
+    "case_id": "4776b959-d5f5-41ad-ab39-dba6031f6884"
+  },
+  {
+    "file_id": "7e774ac2-2ac2-426c-afb4-3698a59b2a8b",
+    "file_name": "45b03af8-f396-4c1b-809a-5e2aa7ce0769.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4230611,
+    "case_id": "386b629e-fab1-4033-b088-45d6eeb4a13e"
+  },
+  {
+    "file_id": "0d82cb5e-2e4e-4879-9b7e-b929fb590c0a",
+    "file_name": "b556f213-9004-45b1-ab97-09cbac4406c4.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4237706,
+    "case_id": "389d5472-9e4a-47b3-bd6c-994eb0fafea2"
+  },
+  {
+    "file_id": "744c9d5a-ea71-4888-b36b-c1a286715d7b",
+    "file_name": "df47f95a-fb4a-4ea2-a929-c1d1971997a0.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4244881,
+    "case_id": "50603cc6-42e6-412f-ab07-4805f728e6b6"
+  },
+  {
+    "file_id": "60aa2851-1883-40c0-b41c-c0ba8292c368",
+    "file_name": "abe6bb88-6bf3-41f2-897e-073edf2ebc33.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4235480,
+    "case_id": "3a3fc890-1985-4353-861b-dc3abfb364b1"
+  },
+  {
+    "file_id": "a88ed7cf-0ddf-4040-b542-3510dff18c7d",
+    "file_name": "0601cab0-163f-48e4-bc9f-87b068d8b591.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4257516,
+    "case_id": "5234bf79-decc-45a1-8377-e6b09ceba82a"
+  },
+  {
+    "file_id": "5839c040-bff3-4c8d-82ee-45d0bc793963",
+    "file_name": "fd950816-2bc3-4e25-90b4-6a6a049cd809.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4241848,
+    "case_id": "543c0a7d-ccd7-4b8d-98fb-eabec806231d"
+  },
+  {
+    "file_id": "9d155818-9683-4142-8808-2512e111f15a",
+    "file_name": "4ebf51c8-f12e-4c83-9bba-414e5ba20e7c.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4237991,
+    "case_id": "3caf009f-d9e0-4c57-b1d9-8eb59fc833bd"
+  },
+  {
+    "file_id": "068454cb-7789-4814-80a0-1935c6a08798",
+    "file_name": "efbd20eb-2922-4904-8cf1-88d5bb09ab30.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4254229,
+    "case_id": "55a063b0-98ad-4700-b3ce-61bfe364fec8"
+  },
+  {
+    "file_id": "61445f43-1bce-4ea4-8583-7c421fb730b3",
+    "file_name": "887aaafb-3913-4418-9991-1c48d4ab7629.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4238987,
+    "case_id": "55a063b0-98ad-4700-b3ce-61bfe364fec8"
+  },
+  {
+    "file_id": "bc52ddc4-e8da-45fc-8c3a-6a9683d699af",
+    "file_name": "6afd066b-806e-4568-94d9-ac189d1101af.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4240470,
+    "case_id": "5a86d9f1-d38d-4b78-9a23-c7855a20ca2d"
+  },
+  {
+    "file_id": "09445310-8c2b-4bf1-b619-bfe8b3f9a5e8",
+    "file_name": "502882eb-8819-4015-8483-ab720e2a25bf.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4247666,
+    "case_id": "603d2b61-b636-4054-ac95-ab66dabb3b48"
+  },
+  {
+    "file_id": "1fbcfcc7-43b6-4335-aeee-90329bddab6e",
+    "file_name": "f16d9348-2781-4518-a34a-fbfcc18e1f7b.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4226002,
+    "case_id": "61ed8fbd-b753-451e-9683-edd4b266b0f3"
+  },
+  {
+    "file_id": "97fa5798-8412-4934-8d55-616cdf251386",
+    "file_name": "09cda3f9-fd03-416c-9ad7-8e27cdb7bd10.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4226043,
+    "case_id": "6e6962d8-34b8-431c-8220-42b0b92a410b"
+  },
+  {
+    "file_id": "c410d37e-e445-4f5f-8937-e6796dd52364",
+    "file_name": "4cc96a03-4717-465b-b0c6-dfb947ff3c5e.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4246237,
+    "case_id": "680b2e96-f00b-4012-8728-b0ec20c50ce0"
+  },
+  {
+    "file_id": "56c0c169-5480-4d14-b0d7-bd4214d0e7cf",
+    "file_name": "d088027b-e691-4962-bf1c-85abd24ac76c.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4247082,
+    "case_id": "6e72d2e2-96fe-4fbb-9fe6-39ec28753eb6"
+  },
+  {
+    "file_id": "f2b0d855-a2bd-4c36-aa6e-46732a102be0",
+    "file_name": "f78bc420-1d4a-4b75-b400-65352b99b4e8.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4226382,
+    "case_id": "74ce7e7f-e214-4b6e-8551-114a153ab7fb"
+  },
+  {
+    "file_id": "b9f22a3d-f54f-40d3-a2d2-7b2788eb4d64",
+    "file_name": "c0b1e5a6-3308-43c6-9e76-feda9f67c1a0.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4202046,
+    "case_id": "74ce7e7f-e214-4b6e-8551-114a153ab7fb"
+  },
+  {
+    "file_id": "14e6f46e-a34a-41c6-bd22-1f46fd76836b",
+    "file_name": "3b6125da-8c27-4889-a5d1-4bdc697f2a72.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4230828,
+    "case_id": "713190ed-c6c1-4695-814b-85ca9b95e6a0"
+  },
+  {
+    "file_id": "51874595-feb0-41a6-811f-dd732cf6c93c",
+    "file_name": "f60c516c-6be7-4dda-9e46-46a87039c099.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4268629,
+    "case_id": "713190ed-c6c1-4695-814b-85ca9b95e6a0"
+  },
+  {
+    "file_id": "81ddd54e-ce35-4a15-ba5c-a58b5cac12ff",
+    "file_name": "5b56daff-2531-46b1-a277-86b88b878c61.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4251659,
+    "case_id": "752a6e21-9a91-417f-beba-bfdf331d5cac"
+  },
+  {
+    "file_id": "27ee0eba-2f11-447b-a153-c8dc679d5fc6",
+    "file_name": "59f436d5-7a66-40a8-9bca-b1e354452492.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4240268,
+    "case_id": "74139255-a635-4c87-814d-3dd04ed630a8"
+  },
+  {
+    "file_id": "cf2e2654-325d-433b-9a56-731a32e16dba",
+    "file_name": "3161d1dc-d31c-42ea-b6e4-a92dfac232d5.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4238921,
+    "case_id": "77d4d3ef-3fe0-4f93-a863-b5840926576c"
+  },
+  {
+    "file_id": "b8ef3888-aa28-4590-a2d8-d16943b247b5",
+    "file_name": "92dec9cc-fcd9-4cfc-9bc2-84372e772a5d.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4230886,
+    "case_id": "7cbabf1d-ec38-4048-ae1c-7d0f3001691b"
+  },
+  {
+    "file_id": "75c3d182-f026-4cfe-be32-a6bf4420ee13",
+    "file_name": "f8e0df1c-94bc-4e0f-b45e-51aa187c04d8.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4248216,
+    "case_id": "81648978-a543-4eae-8848-98ddf1cb832b"
+  },
+  {
+    "file_id": "717e77de-9276-4ad9-bb49-e333b7bf2df3",
+    "file_name": "86aad7af-3cf5-4941-9ef5-78aafdb57cc3.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4227528,
+    "case_id": "7d5c3699-ce28-4129-8391-736f670e8beb"
+  },
+  {
+    "file_id": "43579ef7-e1c1-4c8e-8033-b63eebbf2f5d",
+    "file_name": "22e5949e-2b59-4f74-9c48-ee1cc43032c4.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4246113,
+    "case_id": "863c285c-5b87-42b9-b8b3-1ae832a6ded3"
+  },
+  {
+    "file_id": "eb7892cc-7f41-4797-a794-84c4f79df3ed",
+    "file_name": "2d2d4fdc-063c-4078-9eb9-758384cbeb22.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4259197,
+    "case_id": "7db115ea-082b-45bb-97d2-4254270b8bb6"
+  },
+  {
+    "file_id": "952293c8-b957-43ce-bc2e-c975fb57afa1",
+    "file_name": "e1f24215-12d6-400a-b527-cee0c4d7ef8a.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4243355,
+    "case_id": "820aea32-8f1c-478b-ab56-8171425cd76b"
+  },
+  {
+    "file_id": "3524be8c-d600-492a-b912-f712ad158a8e",
+    "file_name": "0de2c4aa-0a01-49af-bc43-027f6321eb15.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4224810,
+    "case_id": "878584ad-e6b6-493a-9f7f-3e284f5d9f68"
+  },
+  {
+    "file_id": "90cae234-f47d-4d36-b623-f602c8933228",
+    "file_name": "5237a678-9f82-4aa3-a874-39179cff6ba5.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4244297,
+    "case_id": "884f867b-4a8b-4b67-8fe4-ab3f068be84e"
+  },
+  {
+    "file_id": "3a92bb9b-a6ee-418e-9c21-6bfcf3d6b1a9",
+    "file_name": "251de1f4-0bc3-4b44-af08-1abc9c720f67.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4251398,
+    "case_id": "8d2e88d9-d8d0-4c42-8aa2-205a788dea58"
+  },
+  {
+    "file_id": "0aa2e992-c3ad-4509-8d82-399b0d760565",
+    "file_name": "ed0f8f0e-9dbf-475b-8cd7-1f712c5929b8.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4225595,
+    "case_id": "8d2e88d9-d8d0-4c42-8aa2-205a788dea58"
+  },
+  {
+    "file_id": "d44fbbb6-168a-4454-aa47-7da08a8949b6",
+    "file_name": "32291119-ef4e-4041-9949-dc88dfce459a.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4243153,
+    "case_id": "8e6b9705-e9d2-4fbc-ac03-35c1a5115eef"
+  },
+  {
+    "file_id": "43fd871e-74dc-4b9a-9101-e836c3f67b9a",
+    "file_name": "d921ae97-0106-4326-a7d1-8802fd11acbf.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4221701,
+    "case_id": "8f3acbbd-b2ca-4e66-8fe5-dbb49277f35b"
+  },
+  {
+    "file_id": "e6ee7bbd-f3c8-46da-a7b2-f5d801408888",
+    "file_name": "213d3ace-8e69-44d1-9d14-21885213a765.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4232515,
+    "case_id": "9853c6bb-a42c-4698-abe5-f3c897ebc8f6"
+  },
+  {
+    "file_id": "38a55896-f00e-418d-bc18-4ca30da378ef",
+    "file_name": "df3438b0-f3c9-4d19-bfe3-685b97b05a3a.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4246077,
+    "case_id": "98e2f2ec-bdcd-490a-bf45-600e3b6c7491"
+  },
+  {
+    "file_id": "3e599f68-2ba6-4fef-99aa-4b0bdf31e9bb",
+    "file_name": "4ead1157-bb18-4e7c-9632-b13d869c5365.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4231265,
+    "case_id": "987cb702-057b-4198-8ef3-9cf6a9c51989"
+  },
+  {
+    "file_id": "30375ae3-f85f-4721-bef4-3094fe8bf38a",
+    "file_name": "e749773c-7cd6-45d4-ae43-68b03f9b2a25.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4210117,
+    "case_id": "9733968f-262f-4e97-9194-240cda8caf65"
+  },
+  {
+    "file_id": "685a7e87-51f7-4da9-9ae1-659b1ff3c249",
+    "file_name": "b134958f-ae1e-4309-9cfc-16b443ab10c8.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4245026,
+    "case_id": "9b9654c9-5a64-4a8e-b1f0-987437e6012e"
+  },
+  {
+    "file_id": "ddaed459-ab19-4f75-a1a9-72761287c6f5",
+    "file_name": "152343f6-832e-4077-83d3-1589ef71b472.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4242095,
+    "case_id": "a2b0094b-8a0c-4505-a1fa-7e1e47d0374d"
+  },
+  {
+    "file_id": "29326853-4718-4666-a8aa-de5326e25802",
+    "file_name": "b4a1254d-9975-4cc8-88ed-8ad37ac0af82.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4248188,
+    "case_id": "98e0344d-71c6-477c-a990-0bd0277606af"
+  },
+  {
+    "file_id": "170ed38a-fdce-4c28-a8ed-982d6a21add0",
+    "file_name": "9e09a872-f5f7-4cc1-bb08-07045fcd0c28.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4241393,
+    "case_id": "a2ac9937-f351-4d78-9261-264bf6c21e0c"
+  },
+  {
+    "file_id": "1f3b0d72-84cb-44ba-801b-a8d58baf2849",
+    "file_name": "87ee4cad-86d3-4b6b-952d-d565247b9a1e.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4242588,
+    "case_id": "ab327397-a510-4b39-a12e-185c726650ff"
+  },
+  {
+    "file_id": "a429b161-cfac-461b-ac19-08dbb3a9468f",
+    "file_name": "4d88e95f-b1fe-4dd6-b602-3db0197b693c.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4234126,
+    "case_id": "ad7a6a27-c517-49ef-a9f9-518dccda23b4"
+  },
+  {
+    "file_id": "4006124f-a213-4d56-843f-0764b5f4a89b",
+    "file_name": "7f316dbf-94f8-467e-89fc-ae78a91348b5.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4231441,
+    "case_id": "afd3a4dc-a2e5-4545-92b8-a18e72fc9e94"
+  },
+  {
+    "file_id": "819b706a-5f79-47b3-963c-72e445b7c9b5",
+    "file_name": "c45fcca1-63ec-40f6-bd58-558a002f5b36.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4259168,
+    "case_id": "bde84ea9-55c9-4d6d-be86-58fd9222c1d6"
+  },
+  {
+    "file_id": "a4e993e8-cfc0-431e-8f7b-4d58b364061e",
+    "file_name": "4182c637-8f3b-4e58-8ea9-e8c9859bfbd3.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4234446,
+    "case_id": "3258cb3b-f63b-463c-b2e4-d638149157c5"
+  },
+  {
+    "file_id": "b2bfc3b2-5c31-47aa-b008-5b959d0f8b0a",
+    "file_name": "7d1ba30d-6d00-479f-8ae9-f818c56ba9c5.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4244613,
+    "case_id": "7cada85b-00b1-41e5-9924-e09eb077ad56"
+  },
+  {
+    "file_id": "6827c4ab-4d67-41a3-9e37-b540f5d7c703",
+    "file_name": "e1757a20-2d6f-4aee-bafb-804302b448ea.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4251418,
+    "case_id": "8da3103e-3e6c-4176-a583-d5fe5e60601e"
+  },
+  {
+    "file_id": "77b98b70-9bef-4e81-9eac-91467c322d4b",
+    "file_name": "b198a226-f734-46c8-93db-0914f0fa6805.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4201152,
+    "case_id": "5bbeb8a7-3ac2-4ef1-bd48-6f83bc994a75"
+  },
+  {
+    "file_id": "8ca6d647-8970-4b82-99a3-fc72d9c51755",
+    "file_name": "5862a2c8-9700-4bfd-8247-176efebc3efb.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4243010,
+    "case_id": "5613f5f6-086d-470b-8f77-6dcb7f8625b7"
+  },
+  {
+    "file_id": "ec8b5d60-3513-4a7b-9f91-440ec0516150",
+    "file_name": "08633296-acaa-4c6f-a2f1-29e58898a303.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4235309,
+    "case_id": "a3cc2845-8a44-4b50-8a3e-17a3c2c3e077"
+  },
+  {
+    "file_id": "614ea667-8b70-4b0b-bb7c-a5c5b30490fc",
+    "file_name": "4a173140-8ec3-4f61-9cc4-86470fb75b8a.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4229946,
+    "case_id": "53abce1d-7e33-4ebd-832f-f3789f67377f"
+  },
+  {
+    "file_id": "e893a718-4856-4e61-b33f-fcf44d62c305",
+    "file_name": "bc80aba0-0e0f-4177-85ca-73be517be7b0.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4227371,
+    "case_id": "a515cf2d-e918-4958-9bf6-e611b425a97e"
+  },
+  {
+    "file_id": "2993bb8a-03d8-460e-a317-861563827d9c",
+    "file_name": "ab2b399a-d267-49df-8327-4e9529b26a38.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4207301,
+    "case_id": "7391f99d-9528-46a1-9799-c5f0a7bfc63e"
+  },
+  {
+    "file_id": "d863d32c-ed50-4644-9ee1-7464bd79e1e0",
+    "file_name": "b7a4bdef-c538-4f6f-9892-b21620ff02bc.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4239191,
+    "case_id": "e57b296a-80e9-4446-a3d1-3dbfeaf04f5e"
+  },
+  {
+    "file_id": "3071ca0c-c031-4fe2-a534-e7de322bc4ae",
+    "file_name": "bdd0d102-23f1-4b2d-9080-4eb1c933ddd7.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4240821,
+    "case_id": "6ff96a7e-1b96-4530-b8a8-7f2e9e541955"
+  },
+  {
+    "file_id": "f3c448ec-974c-433f-a552-f57f64453628",
+    "file_name": "f9e9b712-c1a2-4821-924f-027e2ce78d90.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4232699,
+    "case_id": "47a4161c-9c61-48f5-b9bc-a6d1acad4e5a"
+  },
+  {
+    "file_id": "b03b4495-465b-4e4b-b435-a61990f4a5f9",
+    "file_name": "31872322-b3b2-48fd-b86d-ad15525f6fec.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4233964,
+    "case_id": "0078b0c4-68a9-483b-9aab-61156d263213"
+  },
+  {
+    "file_id": "7f21d9fd-fd8a-44ec-b01f-93ded2b6babf",
+    "file_name": "64d208b9-6a15-4077-885f-30d9cdedf147.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4229310,
+    "case_id": "0078b0c4-68a9-483b-9aab-61156d263213"
+  },
+  {
+    "file_id": "d8b840c7-e6cd-4cf9-824f-131fb18bf3b4",
+    "file_name": "08dce278-ba8d-4ba0-90a1-e40820fd1740.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4249712,
+    "case_id": "054f472f-98cb-4559-b2e2-b5f800fc8eef"
+  },
+  {
+    "file_id": "651cc270-e577-40ba-9c8d-e4c36e5118ca",
+    "file_name": "24397ba5-84a8-46da-a55d-5764690dc17c.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4252059,
+    "case_id": "0389b35b-651b-4776-b12a-d315a100f47c"
+  },
+  {
+    "file_id": "a7dce4a1-a72c-471e-bce0-92da1948e7d3",
+    "file_name": "fe757d4a-9d17-4a14-a198-dfe57e6c00f2.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4245189,
+    "case_id": "0ca72ebd-ff33-45b8-a97c-3f1435603d71"
+  },
+  {
+    "file_id": "60913ab3-15e5-4978-8ca8-e1a74f82f9e4",
+    "file_name": "7a4908be-65e5-4008-8eec-becdc9903c74.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4239357,
+    "case_id": "0628cb4a-c480-4b2f-bd2e-bb33e6994302"
+  },
+  {
+    "file_id": "9c73dcae-262a-4473-a999-3ec148b733ed",
+    "file_name": "79b783ac-103f-47a6-bc4b-8498a0be46ac.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4242247,
+    "case_id": "153c2442-ea61-4b5e-8c5c-c71d287c6055"
+  },
+  {
+    "file_id": "6a0df69c-6211-4db9-a278-fc7b2a2bb92c",
+    "file_name": "7412a444-9fad-4d96-a4d4-2c270045919a.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4248718,
+    "case_id": "2188c194-dfe4-4471-9b8b-050db1a1062c"
+  },
+  {
+    "file_id": "74f3f3cb-d6f1-4e4f-8c76-7ebeefa0dbcf",
+    "file_name": "1483c347-bb2c-4678-af16-163e4fc1791d.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4244621,
+    "case_id": "de7b7cac-f094-4d59-8651-e991e34ea093"
+  },
+  {
+    "file_id": "4b4d9eb1-5ceb-49e5-8ff2-d24ab8d60356",
+    "file_name": "33ce2e6b-71eb-459d-9b05-9495a21be871.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4227726,
+    "case_id": "de7b7cac-f094-4d59-8651-e991e34ea093"
+  },
+  {
+    "file_id": "75a95ec8-b67a-4e0c-a959-61344628ab11",
+    "file_name": "9ea6219c-d1fb-4f5b-bdab-c3492f180ac2.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4243645,
+    "case_id": "de7b7cac-f094-4d59-8651-e991e34ea093"
+  },
+  {
+    "file_id": "5a2427b9-3e21-4ae3-bde7-06efcdf2bea3",
+    "file_name": "b45c00da-6d61-4b10-befa-dc1123f955a9.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4240477,
+    "case_id": "28da11ec-f46a-4abc-b4c8-bbb784419c71"
+  },
+  {
+    "file_id": "7b8c7e1e-6df9-4b64-9d94-5f16c3dda92a",
+    "file_name": "4ac05a26-e45b-4936-99fa-e031cd5b212c.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4233927,
+    "case_id": "2b82e941-1b16-444e-af41-24dbc0a7e8b5"
+  },
+  {
+    "file_id": "edf6d70c-dced-441c-8098-d53ae856143e",
+    "file_name": "0257f378-cf6a-42f2-9cb1-0d10b4ca1b9a.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4235918,
+    "case_id": "2b90648c-c99e-4d4d-8d9b-67ff2c4e6115"
+  },
+  {
+    "file_id": "82ff78cf-87af-475f-9eae-0d6137734028",
+    "file_name": "8a3d5786-f5fe-4c3b-9a58-23a3a0bfa6d4.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4245464,
+    "case_id": "2f8b698a-cbd0-4cab-a814-dc683e0e9305"
+  },
+  {
+    "file_id": "31050be4-da9b-4691-9a70-93d1dda4695a",
+    "file_name": "936f451e-b761-47f8-9d3d-db4cdb1ec27b.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4255633,
+    "case_id": "30011f30-2926-47f2-a8f3-4f1b58ffa227"
+  },
+  {
+    "file_id": "179e130e-fe52-473e-8a5f-35d230458e69",
+    "file_name": "af0700ee-8602-4f6c-b104-dd4d19da99a8.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4218176,
+    "case_id": "2f61ea6b-a3f2-477f-ab98-47ed07b3b2cd"
+  },
+  {
+    "file_id": "2b542440-46c8-49b4-8657-a01e864b3f80",
+    "file_name": "63af1588-387b-44a7-97ed-4f73559347c2.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4235697,
+    "case_id": "30256f61-7be9-4d47-8afd-afafa7a079c0"
+  },
+  {
+    "file_id": "34eded85-bb51-4577-a728-152f6914ed1a",
+    "file_name": "e88178d8-35c0-4578-b52b-30ebe4847b6e.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4231523,
+    "case_id": "309005a2-93a8-4566-b8d3-6b9310144266"
+  },
+  {
+    "file_id": "2c956eb1-35be-4653-b43b-04df722e82f2",
+    "file_name": "e2304515-3868-4f25-9967-900a3ae600be.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4241827,
+    "case_id": "309005a2-93a8-4566-b8d3-6b9310144266"
+  },
+  {
+    "file_id": "ddb028d4-2242-4de7-9560-4c7fd0b93af7",
+    "file_name": "91bd0932-0312-404f-b836-c1ab7f9e2cf3.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4251419,
+    "case_id": "314d9188-c8fd-43fc-905d-b6889de542c8"
+  },
+  {
+    "file_id": "72f34773-218d-41e0-93dc-7aae1ed50cee",
+    "file_name": "97f42a19-6ae6-4cd5-b4f5-4777c44324e8.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4245134,
+    "case_id": "314d9188-c8fd-43fc-905d-b6889de542c8"
+  },
+  {
+    "file_id": "b7155621-2b01-4524-857a-a1f1ca0a527a",
+    "file_name": "2463aaf7-9673-4bf2-9e8e-41d01e2379a1.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4246604,
+    "case_id": "32afdc6c-e899-4795-9e90-c9a192bbc4c1"
+  },
+  {
+    "file_id": "4c8938ac-74ea-46f3-af36-8aa38d01e380",
+    "file_name": "a01b2990-48f1-4513-8438-df7d1c39b51f.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4239356,
+    "case_id": "8da3103e-3e6c-4176-a583-d5fe5e60601e"
+  },
+  {
+    "file_id": "54bde4b3-b158-4836-a593-68b414076832",
+    "file_name": "93803595-0b8a-4d0b-9439-e1d7d1eb6fd4.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4211061,
+    "case_id": "5c984433-33cf-42fc-b3ba-511efcdcab19"
+  },
+  {
+    "file_id": "69d44ffd-6b61-487d-b4c7-5808913f671c",
+    "file_name": "ceb8abb5-067a-475c-99b2-128d66267b3f.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4238347,
+    "case_id": "9ad6c241-ccc5-4532-a6ac-098271b13b5f"
+  },
+  {
+    "file_id": "50131614-6680-40a9-a26f-b69741146c8c",
+    "file_name": "04b6d829-b031-4d9b-99cd-7f9007227edd.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4216265,
+    "case_id": "9ad6c241-ccc5-4532-a6ac-098271b13b5f"
+  },
+  {
+    "file_id": "a1ec31bd-715d-4589-b7fc-951c79023c33",
+    "file_name": "c47a6a50-b448-4736-b29d-bea454e28085.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4248667,
+    "case_id": "c29d73c0-c885-4105-bf74-38e9178e71c9"
+  },
+  {
+    "file_id": "22f5836e-3ed4-45e7-94a2-dfafd689ac05",
+    "file_name": "e044dbf9-7587-48b7-b58a-b4f5d9401309.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4222281,
+    "case_id": "149be735-d5db-43b6-80b7-d40e3a84500b"
+  },
+  {
+    "file_id": "f9fd3da8-5a2d-4f4d-a91c-4ab3f8666a97",
+    "file_name": "f2d885c3-e234-4584-a071-98ccbb871553.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4234471,
+    "case_id": "1e80ccf6-ef81-4662-bf5e-392f092c1e67"
+  },
+  {
+    "file_id": "92f7ddd7-b0ae-4788-93c1-c2d7f093c92c",
+    "file_name": "46c4e8cb-5a79-49d1-8cd1-70e7288718ef.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4232201,
+    "case_id": "025a7401-a65d-4ea0-8b4e-0ba775b0322a"
+  },
+  {
+    "file_id": "b446e80d-46a1-44ad-a39e-8e17b98c722d",
+    "file_name": "3d122d0e-749d-4388-a74a-a2266792e5de.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4242431,
+    "case_id": "0456a66b-c9b3-4eb1-9872-424a7ea712a2"
+  },
+  {
+    "file_id": "bc8a7421-4529-42de-a66c-f815138fe015",
+    "file_name": "e36091c6-d62c-4997-bb9f-7192b73f12ed.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4249885,
+    "case_id": "872abc8a-6c1f-4114-b993-7d0327fb38bd"
+  },
+  {
+    "file_id": "87f40fda-2a48-4cb6-8b65-e1b043661cce",
+    "file_name": "a400f64e-ec00-4cc0-8110-38b2e349c7cf.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4232820,
+    "case_id": "0078b0c4-68a9-483b-9aab-61156d263213"
+  },
+  {
+    "file_id": "6037d66c-5c66-4a9f-a255-ee76a354b86e",
+    "file_name": "52f507d3-113b-4995-9b7a-8677e7812ef3.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4246034,
+    "case_id": "01a92062-967a-4900-8dc7-a5ecd3b3f8e2"
+  },
+  {
+    "file_id": "dfbc7136-f7f7-4c2f-93a1-c46b2247cce5",
+    "file_name": "7a25193c-a87d-4929-b724-3d89553fa028.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4262595,
+    "case_id": "1030a6b9-0df8-4d60-b69f-2a36e630a6ad"
+  },
+  {
+    "file_id": "c9b30fe5-f8f1-43a9-9c9d-5ec4fd26040d",
+    "file_name": "5a469815-4a88-4a5e-8df5-1e71579577e7.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4231083,
+    "case_id": "12824b2b-9c0a-4dcf-8941-34593a4e93da"
+  },
+  {
+    "file_id": "fb0dbfdf-9d25-47ea-9fb6-bc9da9a56931",
+    "file_name": "a6a0d0d7-9aea-4403-b5c1-c4f2d420059f.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4223737,
+    "case_id": "12b67dc2-5e4c-48eb-92ba-8d91d2eadfe2"
+  },
+  {
+    "file_id": "5c6c31d5-326b-44ea-9c7a-519ac446da3b",
+    "file_name": "e84acff3-3067-49e4-82b7-dbbddfddb723.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4199152,
+    "case_id": "159e0318-6173-440f-be07-8d956086e99d"
+  },
+  {
+    "file_id": "5b02eedb-7b3b-45b2-9552-74b3828da597",
+    "file_name": "f26ac65f-2536-4431-9938-45de5996582e.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4248007,
+    "case_id": "13d12179-3182-4f41-85a2-90fd50e51480"
+  },
+  {
+    "file_id": "23bf357b-285b-4ccc-956c-cb502503e556",
+    "file_name": "c6080974-048f-45f4-97bf-9e4fdcaf09ee.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4224733,
+    "case_id": "165b8f99-f7ba-4553-96ed-235e3f77e19c"
+  },
+  {
+    "file_id": "3609a255-f79f-4fbd-85b1-7d054daf2ccb",
+    "file_name": "bfbd4b8b-d34e-4ad2-a30b-6465d61ddf98.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4253644,
+    "case_id": "166e76db-ccd8-4760-a517-d2bc8937ea29"
+  },
+  {
+    "file_id": "e1f33468-f9c4-4b1a-8cd5-b2c77cc80dc9",
+    "file_name": "5cafc8c0-a92c-407a-ad52-a2d9562c0bfa.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4250273,
+    "case_id": "1b25795e-69ad-47fd-bb2f-94ff0910fae1"
+  },
+  {
+    "file_id": "f72906ff-3f23-431d-a528-31254705f78c",
+    "file_name": "0819aec9-9ebc-4446-9174-08d564d32fcd.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4235466,
+    "case_id": "e3711a9b-6d4c-44df-bbab-0a675046a5df"
+  },
+  {
+    "file_id": "8a3b0191-d125-40ad-9811-c412b6329ab8",
+    "file_name": "2d9df1f6-8588-41a5-ac9c-e4034726b796.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4224860,
+    "case_id": "e948d951-9299-4dec-9772-60b4ac3569cb"
+  },
+  {
+    "file_id": "a29643d9-e0e5-4fb3-b7db-090e0a4948a0",
+    "file_name": "d7278caf-2bf9-48fb-adfa-d30c7b988000.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4224175,
+    "case_id": "24ae6f30-eec8-49a7-abde-246b3873679e"
+  },
+  {
+    "file_id": "60da8783-0760-4366-8647-f3284195592f",
+    "file_name": "e8c1b868-8139-4831-9c66-32f22d556f29.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4241342,
+    "case_id": "1f48f010-98fe-4b5a-b96a-14fb25eff23f"
+  },
+  {
+    "file_id": "79368096-6e7a-4d00-ae56-3ca3fee1546f",
+    "file_name": "7a13e0f8-ed80-4fc5-985a-f40a6585d416.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4242737,
+    "case_id": "1f48f010-98fe-4b5a-b96a-14fb25eff23f"
+  },
+  {
+    "file_id": "1c091fe9-f2ca-478c-95be-b924f30c4c75",
+    "file_name": "c93e41f3-3a23-4757-af8c-af11fab60b52.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4240135,
+    "case_id": "66bd4c9e-2ebd-4092-a2b0-69027e8af5b8"
+  },
+  {
+    "file_id": "0e274ebf-c78b-4a23-b85f-835674f62a0a",
+    "file_name": "d9548857-ab3c-4cf6-8608-4d5951f63c8b.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4249088,
+    "case_id": "0164acd3-34db-4d35-b96c-936daad0ff22"
+  },
+  {
+    "file_id": "145dabfe-a6df-4c9d-a7ac-937e0f9af003",
+    "file_name": "1652c5be-f06b-4600-a1e9-3efbfa73eb4e.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4247349,
+    "case_id": "bb0aca6b-55ab-4b24-8e64-29e0c96a9862"
+  },
+  {
+    "file_id": "e88a253a-4d6b-483c-9e85-692241ff1d19",
+    "file_name": "e7b0cb4b-d9c4-440f-b5d4-857d7e53e303.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4238089,
+    "case_id": "d88b35a3-a291-457a-b15b-a314859b25c5"
+  },
+  {
+    "file_id": "8bb999e1-5b55-4fee-a2b5-618d5c8b4bc2",
+    "file_name": "e013dfab-0f14-496c-98ff-4079c877aaf7.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4236779,
+    "case_id": "4c42dc4e-66b7-40bf-9fbe-b92543248198"
+  },
+  {
+    "file_id": "3f3cea14-b553-4e0b-a255-a15999e760fe",
+    "file_name": "f54636e5-d823-4bc2-9475-2f4f81879067.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4250525,
+    "case_id": "4c42dc4e-66b7-40bf-9fbe-b92543248198"
+  },
+  {
+    "file_id": "5d90192a-0271-4169-ba9d-e52cf081a5c3",
+    "file_name": "c99203bc-27cb-4af5-983f-46d87525a034.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4243526,
+    "case_id": "737b35e1-d668-4fce-9b6e-76946c7952b6"
+  },
+  {
+    "file_id": "bd40ca45-33da-4798-a3bd-7640c784d6a9",
+    "file_name": "c2bc46d6-7065-44ff-a21a-7a3676990fdb.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4236802,
+    "case_id": "149be735-d5db-43b6-80b7-d40e3a84500b"
+  },
+  {
+    "file_id": "629c9424-1e68-4f73-abe3-22fbd3fbbad5",
+    "file_name": "f489cec9-6f4b-4364-b85a-d34cbc8c2015.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4261799,
+    "case_id": "9348e446-0e43-4210-b07e-c534980cbf62"
+  },
+  {
+    "file_id": "e8863676-0fff-4787-8545-f783e4b1f21f",
+    "file_name": "4f0a0b90-41cb-4ea7-97e0-5f771dc22fb2.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4222175,
+    "case_id": "a9597785-a1d3-4788-a431-d25d69025690"
+  },
+  {
+    "file_id": "b9794d24-e3e9-4422-9965-211f4c9c55e9",
+    "file_name": "efd59495-0b78-4b9e-af2b-20adbd7689f5.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4197145,
+    "case_id": "5aa15b7f-35c7-4022-b1b2-74a4f6d3ea85"
+  },
+  {
+    "file_id": "20445437-9781-49d6-b55a-afafcc33c459",
+    "file_name": "64c28835-3395-4328-887f-b2bf042c3d9a.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4241419,
+    "case_id": "35a7e49e-747b-45ce-9a07-3a5faba0ca94"
+  },
+  {
+    "file_id": "4b88ba3b-6b4b-42b4-a64d-d45358cef26d",
+    "file_name": "f505fb40-a27a-4a6a-9a3d-1f11a4b834b3.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4242414,
+    "case_id": "0456a66b-c9b3-4eb1-9872-424a7ea712a2"
+  },
+  {
+    "file_id": "2c4ef6db-ff34-4258-a531-32345845832c",
+    "file_name": "a0910cd1-f12f-4215-bd3a-db593c810dc2.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4238272,
+    "case_id": "04b4ebb4-6780-42d8-a980-711cd10cfe14"
+  },
+  {
+    "file_id": "2bdfdcec-cb7d-4e83-9257-f2c851a6a469",
+    "file_name": "16bcbeb8-21dc-4cfe-9aa1-60b093f7f984.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4219743,
+    "case_id": "01a92062-967a-4900-8dc7-a5ecd3b3f8e2"
+  },
+  {
+    "file_id": "e9e8d1d1-1c59-4cd5-9059-740733d094e1",
+    "file_name": "20e52266-0d53-42ad-afe7-215217854dc3.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4196174,
+    "case_id": "10efeb3c-ef55-4227-91b9-8c2bb4ff43d5"
+  },
+  {
+    "file_id": "0c3a3074-ce20-4faa-ab61-5fd52f0563fe",
+    "file_name": "2be90092-0bf2-493c-8864-b9bd3efa2fcc.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4214158,
+    "case_id": "151ca826-a4d7-42eb-8684-f9fe7b93543f"
+  },
+  {
+    "file_id": "7888f7b7-38da-4cc7-b542-836b193adfbf",
+    "file_name": "75615deb-e120-44f6-a585-1ca07987b7ef.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4228972,
+    "case_id": "159e0318-6173-440f-be07-8d956086e99d"
+  },
+  {
+    "file_id": "4bed9101-07f4-4d76-b79f-6eb8de04bd19",
+    "file_name": "2856d609-b09a-486e-8552-23abaa1df201.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4243935,
+    "case_id": "16242ba1-42fd-4fae-bd2e-433b97fc95c6"
+  },
+  {
+    "file_id": "4350b4e7-6a37-43d8-8eaa-b5f4846e943d",
+    "file_name": "32ee07e4-bec3-4d00-b603-60933581046c.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4234502,
+    "case_id": "1b6c184a-5868-4a51-8a82-aa16a7e65126"
+  },
+  {
+    "file_id": "477a4ae1-84c0-49f2-b3b3-4015b8c26f18",
+    "file_name": "4250878d-ba0b-47e1-96c6-f2331f93ce37.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4237877,
+    "case_id": "1d26c6ae-f2fc-49e4-83a4-b79398c3d8f8"
+  },
+  {
+    "file_id": "f93cd112-520d-408d-a15d-3451f2bacdfd",
+    "file_name": "a8050792-d0f5-4b8f-aea2-0a303f40b1ca.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4206919,
+    "case_id": "20bad0d5-3135-49a4-a119-fa7a1e56fd1b"
+  },
+  {
+    "file_id": "a5292166-235e-488f-bb57-25db83e62df1",
+    "file_name": "3e80fb1c-1d29-45c9-9e02-995c33c70b9c.rna_seq.augmented_star_gene_counts.tsv",
+    "file_size": 4243613,
+    "case_id": "2188c194-dfe4-4471-9b8b-050db1a1062c"
+  }
+]

@@ -1,0 +1,25 @@
+======================================================================
+NEURAL-NOVA v2 — CYCLE 14 SUMMARY
+======================================================================
+
+Molecules Generated:   100
+Passed Screening:      30
+Simulated in Twin:     0
+Reports Generated:     5
+Best Composite Score:  0.5045
+Target Used:           PIK3CA
+Elapsed Time:          15.5s
+
+--- TOP CANDIDATES THIS CYCLE ---
+   1. c1coccc1                                    score=0.5045  BBB=0.989
+   2. c1ccc(Cl)ccnc1                              score=0.4963  BBB=0.984
+   3. CC(CC)c1cccc                                score=0.4962  BBB=0.947
+   4. c1cc(Fc3F)ccc1                              score=0.4926  BBB=0.958
+   5. c1cc(Fl)cco(-)cc1                           score=0.4864  BBB=0.925
+   6. c1cc(Cl)cc3                                 score=0.4861  BBB=0.965
+   7. CC(C)c1cccc1                                score=0.4859  BBB=0.952
+   8. c1cc(Co3)cc1                                score=0.4839  BBB=0.973
+   9. CC(CC)Ccc1ccccc1                            score=0.4797  BBB=0.977
+  10. cnc1cc(F)cc(F)c1                            score=0.4796  BBB=0.908
+
+======================================================================

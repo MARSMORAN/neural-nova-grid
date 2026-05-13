@@ -1,0 +1,25 @@
+======================================================================
+NEURAL-NOVA v2 — CYCLE 15 SUMMARY
+======================================================================
+
+Molecules Generated:   100
+Passed Screening:      30
+Simulated in Twin:     0
+Reports Generated:     5
+Best Composite Score:  0.5304
+Target Used:           PDGFRA
+Elapsed Time:          14.4s
+
+--- TOP CANDIDATES THIS CYCLE ---
+   1. Cn1n2nc(F)cc(F)cc1                          score=0.5304  BBB=0.912
+   2. CC(C)Ccc1cccccc1                            score=0.5149  BBB=0.981
+   3. c1ccc(-o3c3cc3cc3)cc1                       score=0.5061  BBB=0.958
+   4. c1ccco2                                     score=0.5049  BBB=0.994
+   5. Cnc1n2                                      score=0.5048  BBB=0.986
+   6. CCn1n(cc3ccc3)cc1                           score=0.5044  BBB=0.928
+   7. c1cc(-co33)ccc1                             score=0.4949  BBB=0.983
+   8. c1cc(Fo(F)F)cc3cc1                          score=0.4930  BBB=0.889
+   9. c1ccc(C)cc1                                 score=0.4905  BBB=0.992
+  10. c1c(Fo(F)F)(F)cc1                           score=0.4859  BBB=0.751
+
+======================================================================

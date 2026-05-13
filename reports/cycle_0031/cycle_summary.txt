@@ -1,0 +1,25 @@
+======================================================================
+NEURAL-NOVA v2 — CYCLE 31 SUMMARY
+======================================================================
+
+Molecules Generated:   73
+Passed Screening:      30
+Simulated in Twin:     0
+Reports Generated:     5
+Best Composite Score:  0.5493
+Target Used:           CDK4
+Elapsed Time:          11.6s
+
+--- TOP CANDIDATES THIS CYCLE ---
+   1. Cn1nncc3cc1                                 score=0.5493  BBB=0.990
+   2. c1ccoCl1                                    score=0.5310  BBB=0.995
+   3. cn1cc(Fl)Fcl                                score=0.5218  BBB=0.891
+   4. Cn1nncc(F)cccl                              score=0.5188  BBB=0.939
+   5. CC(CC)c1cccccn                              score=0.5172  BBB=0.946
+   6. CC1CC(CC)CCccc1cccc3                        score=0.5155  BBB=0.952
+   7. cn1cc(FlF)ccc3                              score=0.5127  BBB=0.930
+   8. c1cco-3                                     score=0.5108  BBB=0.984
+   9. cn1cc(Fll)Fcc2                              score=0.5105  BBB=0.965
+  10. cc1cccc3                                    score=0.5093  BBB=0.985
+
+======================================================================

@@ -1,0 +1,25 @@
+======================================================================
+NEURAL-NOVA v2 — CYCLE 7 SUMMARY
+======================================================================
+
+Molecules Generated:   100
+Passed Screening:      30
+Simulated in Twin:     0
+Reports Generated:     5
+Best Composite Score:  0.5184
+Target Used:           PDGFRA
+Elapsed Time:          7.3s
+
+--- TOP CANDIDATES THIS CYCLE ---
+   1. c1ncc(C)c(F)cc1                             score=0.5184  BBB=0.955
+   2. c1c(Fl)cc(F)cc1                             score=0.5132  BBB=0.984
+   3. c1cco(-)cc1                                 score=0.5106  BBB=0.986
+   4. c1c(F)cc(-c2)ccc1                           score=0.5034  BBB=0.979
+   5. c1cc(Cl)cc(-2)ccc1                          score=0.4949  BBB=0.973
+   6. c1cco(F)cc1                                 score=0.4851  BBB=0.962
+   7. c1cc(cc1)c(O)cc1                            score=0.4845  BBB=0.920
+   8. c1cc(cc1)cc1cc1                             score=0.4834  BBB=0.986
+   9. c1cc(-c2)ccc1                               score=0.4814  BBB=0.992
+  10. Cc1n(cc3cc3)ccc1                            score=0.4805  BBB=0.972
+
+======================================================================

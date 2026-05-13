@@ -1,0 +1,25 @@
+======================================================================
+NEURAL-NOVA v2 — CYCLE 28 SUMMARY
+======================================================================
+
+Molecules Generated:   84
+Passed Screening:      30
+Simulated in Twin:     0
+Reports Generated:     5
+Best Composite Score:  0.5420
+Target Used:           EGFR
+Elapsed Time:          12.5s
+
+--- TOP CANDIDATES THIS CYCLE ---
+   1. Cnc1nnc(F)cc(F)cc1                          score=0.5420  BBB=0.875
+   2. c1ccon31                                    score=0.5309  BBB=0.992
+   3. Cn1nncc(F)cccl2                             score=0.5300  BBB=0.912
+   4. Cn1nnccc(C)ccc3                             score=0.5241  BBB=0.982
+   5. Cn1nnccc(F)ccc3                             score=0.5179  BBB=0.879
+   6. Cn1nnccc3                                   score=0.5142  BBB=0.961
+   7. c1ccocn3                                    score=0.5124  BBB=0.982
+   8. c1ncc(C)c(F)cc3                             score=0.5089  BBB=0.959
+   9. c1nc(Fl)(F)Fccc3                            score=0.5086  BBB=0.881
+  10. Cn1n(c3cc3)ccc1l2                           score=0.5076  BBB=0.957
+
+======================================================================

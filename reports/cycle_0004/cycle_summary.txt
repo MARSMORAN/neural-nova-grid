@@ -1,0 +1,25 @@
+======================================================================
+NEURAL-NOVA v2 — CYCLE 4 SUMMARY
+======================================================================
+
+Molecules Generated:   109
+Passed Screening:      30
+Simulated in Twin:     0
+Reports Generated:     5
+Best Composite Score:  0.5206
+Target Used:           MGMT
+Elapsed Time:          7.6s
+
+--- TOP CANDIDATES THIS CYCLE ---
+   1. c1cc(Fo(F)F)ccc1                            score=0.5206  BBB=0.867
+   2. c1cc(C(F)(F)F)(F)ccc1                       score=0.5029  BBB=0.755
+   3. c1cc(Fl)cc(F)cc1                            score=0.4832  BBB=0.969
+   4. c1cc(F)cc(C)c1cc1                           score=0.4803  BBB=0.908
+   5. c1ccc(cc1)cc1cc1                            score=0.4737  BBB=0.968
+   6. c1ccncc1(C)C(=O)NC1CCCC                     score=0.4734  BBB=0.886
+   7. c1cc(NC(=O)nnc2ccc3)cc1                     score=0.4650  BBB=0.881
+   8. c1cc(-c3cc3ccc3o2)cc1                       score=0.4621  BBB=0.915
+   9. c1cc(-cc2cc3ccccc3o2)cc1                    score=0.4570  BBB=0.962
+  10. c1ccoc1C(=O)NC1                             score=0.4561  BBB=0.830
+
+======================================================================

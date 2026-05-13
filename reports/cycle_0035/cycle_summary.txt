@@ -1,0 +1,25 @@
+======================================================================
+NEURAL-NOVA v2 — CYCLE 35 SUMMARY
+======================================================================
+
+Molecules Generated:   53
+Passed Screening:      30
+Simulated in Twin:     0
+Reports Generated:     5
+Best Composite Score:  0.5317
+Target Used:           PIK3CA
+Elapsed Time:          12.2s
+
+--- TOP CANDIDATES THIS CYCLE ---
+   1. c1ccco32                                    score=0.5317  BBB=0.990
+   2. Cn1(cc3cc3cc3)cc1                           score=0.5293  BBB=0.974
+   3. Cnc1nnco(F)ccc3                             score=0.5273  BBB=0.971
+   4. Cc1n2(F)cccc3                               score=0.5206  BBB=0.915
+   5. CCn1c3ccc3cc3                               score=0.5089  BBB=0.968
+   6. c1c(FlF)(F)cccc1                            score=0.5080  BBB=0.895
+   7. CC(CC)cc1cccc2                              score=0.5001  BBB=0.967
+   8. c1ccoc32l                                   score=0.4980  BBB=0.971
+   9. Cl1C(F)cccc3                                score=0.4979  BBB=0.984
+  10. Cn1nncoc1                                   score=0.4933  BBB=0.990
+
+======================================================================
