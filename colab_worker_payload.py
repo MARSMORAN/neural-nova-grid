@@ -1,150 +1,87 @@
 """
-colab_worker_payload.py
-The Drone Node script. 
-
-INSTRUCTIONS:
-1. Open a new Google Colab notebook (colab.research.google.com).
-2. Go to Runtime -> Change Runtime Type -> Select "T4 GPU".
-3. Paste this entire script into a cell and press Play.
-4. Open as many tabs/Google accounts as you can.
-
-This script will automatically install RDKit and AutoDock Vina,
-connect to your Grid Brain, pull SMILES, simulate them on the free GPU, 
-and push the results back.
+colab_worker_payload_v2_5.py
+The 'Scientifically Rigorous' Drone Node for GitHub/Colab.
 """
-
 import os
-import sys
-import time
 import requests
-import random
 import uuid
+import time
+import json
+import sys
 
 # --- 1. SETUP ENVIRONMENT ---
 def setup_env():
-    print("[*] Installing heavy physics libraries (RDKit, Smina/Vina)...")
-    os.system("pip install rdkit-pypi quiet")
-    
-    # Download Smina (advanced fork of AutoDock Vina)
+    print("[*] Installing Physics Engines...")
+    os.system("pip install rdkit-pypi -q")
     if not os.path.exists("smina"):
         os.system("wget -q https://sourceforge.net/projects/smina/files/smina.static/download -O smina")
         os.system("chmod +x smina")
-        
-    # Download the actual 3D crystal structure of EGFR (Glioblastoma Target)
-    if not os.path.exists("egfr_gbm.pdb"):
-        print("[*] Downloading actual Glioblastoma protein crystal (EGFR)...")
-        os.system("wget -q https://files.rcsb.org/download/1M17.pdb -O egfr_gbm.pdb")
-        
-    print("[+] Environment Ready. Protein target acquired.")
+    
+    # Full GBM Proteome
+    targets = {"egfr": "1M17", "pi3k": "1E7V", "mtor": "4JSV", "pdgfr": "5GRN"}
+    for name, pdb_id in targets.items():
+        if not os.path.exists(f"{name}.pdb"):
+            os.system(f"wget -q https://files.rcsb.org/download/{pdb_id}.pdb -O {name}.pdb")
 
-# --- 2. WORKER LOGIC ---
-BRAIN_URL = "https://perjury-dilation-sulphate.ngrok-free.dev" # Replace with your brain's public IP or Ngrok
-WORKER_ID = f"colab_gpu_{str(uuid.uuid4())[:8]}"
+# --- 2. MULTI-TARGET DOCKING ENGINE ---
+BRAIN_URL = os.environ.get("BRAIN_URL", "https://perjury-dilation-sulphate.ngrok-free.dev")
+WORKER_ID = f"github_swarm_{str(uuid.uuid4())[:8]}"
 
-def simulate_physics(smiles: str) -> float:
-    """
-    ULTIMATE COMPUTATIONAL CHEMISTRY ENGINE.
-    1. Checks Blood-Brain Barrier (BBB) viability.
-    2. Uses Smina/Vina to physically dock the drug into the GBM protein.
-    """
+def simulate_multi_target(smiles: str):
     try:
         from rdkit import Chem
-        from rdkit.Chem import Descriptors
         import subprocess
-        
-        # 1. Enforce Blood-Brain Barrier (BBB) Rules
         mol = Chem.MolFromSmiles(smiles)
-        if not mol: return 0.0
-            
-        mw = Descriptors.MolWt(mol)
-        logp = Descriptors.MolLogP(mol)
-        tpsa = Descriptors.TPSA(mol)
+        if not mol: return None
         
-        if mw > 500 or logp > 5.0 or tpsa > 90:
-            return 0.0 # Drug cannot enter the brain, reject.
-            
-        # 2. ACTUAL MOLECULAR DOCKING (VINA)
-        # Smina requires a file, so we write the SMILES to a temporary file
-        temp_ligand = f"temp_{WORKER_ID}.smi"
-        with open(temp_ligand, "w") as f:
-            f.write(smiles)
-
-        # We pass the temporary file to Smina and dock it against the EGFR protein.
-        cmd = [
-            "./smina", 
-            "-r", "egfr_gbm.pdb", 
-            "-l", temp_ligand, 
-            "--autobox_ligand", "egfr_gbm.pdb", 
-            "--exhaustiveness", "1", 
-            "--quiet"
-        ]
+        # Dock Primary (EGFR) + Capture Pose
+        with open("temp.smi", "w") as f: f.write(smiles)
+        cmd = ["./smina", "-r", "egfr.pdb", "-l", "temp.smi", "--autobox_ligand", "egfr.pdb", "--exhaustiveness", "1", "--quiet", "--out", "pose.pdbqt"]
+        res = subprocess.run(cmd, capture_output=True, text=True)
         
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        
-        # Cleanup temp file
-        if os.path.exists(temp_ligand):
-            os.remove(temp_ligand)
-        
-        # Parse the kcal/mol score from Smina's output table
-        score = 0.0
-        lines = result.stdout.split('\n')
+        primary_score = 0.0
+        lines = res.stdout.split('\n')
         for i, line in enumerate(lines):
-            if "-----+------------+----------+----------" in line:
-                if i + 1 < len(lines):
-                    top_score_line = lines[i+1]
-                    parts = top_score_line.split()
-                    if len(parts) >= 2:
-                        score = float(parts[1])
+            if "-----+------------" in line:
+                primary_score = float(lines[i+1].split()[1])
                 break
-                
-        # If it found a real binding score, return it. Otherwise 0.0.
-        return score if score < 0 else 0.0
-
-    except Exception as e:
-        return 0.0
+        if primary_score > -7.0: return None
+        
+        # Cross-Dock
+        profile = {}
+        for t in ["pi3k", "mtor", "pdgfr"]:
+            cmd = ["./smina", "-r", f"{t}.pdb", "-l", "temp.smi", "--autobox_ligand", f"{t}.pdb", "--exhaustiveness", "1", "--quiet"]
+            c_res = subprocess.run(cmd, capture_output=True, text=True)
+            c_lines = c_res.stdout.split('\n')
+            for i, l in enumerate(c_lines):
+                if "-----+------------" in l:
+                    profile[t] = float(c_lines[i+1].split()[1])
+                    break
+        
+        pose = ""
+        if os.path.exists("pose.pdbqt"):
+            with open("pose.pdbqt", "r") as f: pose = f.read()
+            
+        return {"smiles": smiles, "score": primary_score, "metadata": {"target_profile": profile, "docked_pose": pose}}
+    except: return None
 
 def run_worker_loop():
-    print(f"[*] Starting Neural-Nova Worker: {WORKER_ID}")
-    
+    print(f"[*] SWARM NODE {WORKER_ID} ONLINE.")
     while True:
         try:
-            # Pull work
-            print("[*] Pulling batch from Grid Brain...")
-            headers = {"ngrok-skip-browser-warning": "true"}
-            resp = requests.get(f"{BRAIN_URL}/get_work?batch_size=50", headers=headers, timeout=10)
-            data = resp.json()
+            resp = requests.get(f"{BRAIN_URL}/get_work?batch_size=10", headers={"ngrok-skip-browser-warning": "true"}, timeout=15)
+            smiles = resp.json().get("smiles_list", [])
+            if not smiles: time.sleep(15); continue
             
-            smiles_list = data.get("smiles_list", [])
-            if not smiles_list:
-                print("[-] Queue empty. Sleeping 10s...")
-                time.sleep(10)
-                continue
-                
-            print(f"[+] Received {len(smiles_list)} molecules. Engaging GPU physics engine...")
-            
-            # Process
             results = []
-            for smi in smiles_list:
-                score = simulate_physics(smi)
-                # Only keep strong binders to save bandwidth
-                if score < -7.0: 
-                    results.append({"smiles": smi, "score": score})
-                    
-            # Push results
+            for s in smiles:
+                r = simulate_multi_target(s)
+                if r: results.append(r)
+            
             if results:
-                print(f"[+] Found {len(results)} strong binders! Pushing to Brain...")
-                payload = {
-                    "worker_id": WORKER_ID,
-                    "molecules": results
-                }
-                headers = {"ngrok-skip-browser-warning": "true"}
-                requests.post(f"{BRAIN_URL}/submit_results", json=payload, headers=headers, timeout=10)
-            else:
-                print("[-] No strong binders in this batch.")
-                
+                requests.post(f"{BRAIN_URL}/submit_results", json={"worker_id": WORKER_ID, "molecules": results}, headers={"ngrok-skip-browser-warning": "true"}, timeout=15)
         except Exception as e:
-            print(f"[!] Connection to Brain lost: {e}")
-            time.sleep(5)
+            print(f"Loop Error: {e}"); time.sleep(5)
 
 if __name__ == "__main__":
     setup_env()

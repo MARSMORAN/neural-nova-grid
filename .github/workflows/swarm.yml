@@ -30,11 +30,5 @@ jobs:
       env:
         BRAIN_URL: ${{ secrets.NGROK_URL }}
       run: |
-        # Download the worker payload dynamically
-        wget -qO worker.py https://raw.githubusercontent.com/MARSMORAN/neural-nova-grid/main/colab_worker_payload.py
-        
-        # Override the URL to use GitHub Secrets
-        sed -i 's|BRAIN_URL = "http://YOUR_NGROK_URL_HERE:8000"|BRAIN_URL = os.environ.get("BRAIN_URL")|g' worker.py
-        
-        # Run worker for 25 minutes before GitHub kills it (cron triggers next wave anyway)
-        timeout 25m python worker.py || exit 0
+        # Run the local Gen 2.5 worker for 25 minutes
+        timeout 25m python colab_worker_payload.py || exit 0
