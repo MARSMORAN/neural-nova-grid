@@ -85,13 +85,16 @@ def simulate_physics(smiles: str) -> float:
         if os.path.exists(temp_ligand):
             os.remove(temp_ligand)
         
-        # Parse the kcal/mol score from Smina's output
+        # Parse the kcal/mol score from Smina's output table
         score = 0.0
-        for line in result.stdout.split('\n'):
-            if "Affinity:" in line:
-                # Extracts the negative binding score
-                parts = line.split()
-                score = float(parts[1])
+        lines = result.stdout.split('\n')
+        for i, line in enumerate(lines):
+            if "-----+------------+----------+----------" in line:
+                if i + 1 < len(lines):
+                    top_score_line = lines[i+1]
+                    parts = top_score_line.split()
+                    if len(parts) >= 2:
+                        score = float(parts[1])
                 break
                 
         # If it found a real binding score, return it. Otherwise 0.0.
