@@ -64,18 +64,26 @@ def simulate_physics(smiles: str) -> float:
             return 0.0 # Drug cannot enter the brain, reject.
             
         # 2. ACTUAL MOLECULAR DOCKING (VINA)
-        # We pass the SMILES directly to Smina and dock it against the EGFR protein.
-        # This will use the CPU/GPU to calculate the real kcal/mol binding affinity.
+        # Smina requires a file, so we write the SMILES to a temporary file
+        temp_ligand = f"temp_{WORKER_ID}.smi"
+        with open(temp_ligand, "w") as f:
+            f.write(smiles)
+
+        # We pass the temporary file to Smina and dock it against the EGFR protein.
         cmd = [
             "./smina", 
             "-r", "egfr_gbm.pdb", 
-            "-l", smiles, 
+            "-l", temp_ligand, 
             "--autobox_ligand", "egfr_gbm.pdb", 
             "--exhaustiveness", "1", 
             "--quiet"
         ]
         
         result = subprocess.run(cmd, capture_output=True, text=True)
+        
+        # Cleanup temp file
+        if os.path.exists(temp_ligand):
+            os.remove(temp_ligand)
         
         # Parse the kcal/mol score from Smina's output
         score = 0.0
