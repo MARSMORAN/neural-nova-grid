@@ -31,7 +31,7 @@ jobs:
         BRAIN_URL: ${{ secrets.NGROK_URL }}
       run: |
         # Download the worker payload dynamically
-        wget -qO worker.py https://raw.githubusercontent.com/YOUR_USERNAME/neural-nova-grid/main/colab_worker_payload.py
+        wget -qO worker.py https://raw.githubusercontent.com/MARSMORAN/neural-nova-grid/main/colab_worker_payload.py
         
         # Override the URL to use GitHub Secrets
         sed -i 's|BRAIN_URL = "http://YOUR_NGROK_URL_HERE:8000"|BRAIN_URL = os.environ.get("BRAIN_URL")|g' worker.py
