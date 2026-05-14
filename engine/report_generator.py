@@ -130,7 +130,13 @@ class ReportGenerator:
             logp = Descriptors.MolLogP(mol)
             qed_val = QED.qed(mol)
             bertz = GraphDescriptors.BertzCT(mol)
-            sa_complexity = (bertz / 1000.0) + (mw / 500.0) + (Descriptors.NumAtomStereoCenters(mol) * 0.5)
+            try:
+                chiral_centers = Descriptors.NumAtomStereoCenters(mol)
+            except AttributeError:
+                # Safe fallback if the attribute is moved or renamed in future RDKit versions
+                chiral_centers = len(Chem.FindMolChiralCenters(mol, includeUnassigned=True))
+            
+            sa_complexity = (bertz / 1000.0) + (mw / 500.0) + (chiral_centers * 0.5)
             dg = candidate.get("docking_score", -9.8)
             ic50_nm = math.exp(dg / (0.001987 * 310)) * 1e9
         else:

@@ -14,6 +14,14 @@ import sys
 def setup_env():
     print("[*] Installing Physics Engines...")
     os.system(f"{sys.executable} -m pip install rdkit -q")
+    
+    # Silence RDKit Errors
+    try:
+        from rdkit import RDLogger
+        RDLogger.DisableLog('rdApp.*')
+    except:
+        pass
+
     if not os.path.exists("smina"):
         os.system("wget -q https://sourceforge.net/projects/smina/files/smina.static/download -O smina")
         os.system("chmod +x smina")

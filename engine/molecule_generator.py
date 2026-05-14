@@ -25,6 +25,8 @@ logger = logging.getLogger(__name__)
 try:
     from rdkit import Chem
     from rdkit.Chem import AllChem
+    from rdkit import RDLogger
+    RDLogger.DisableLog('rdApp.*')
     HAS_RDKIT = True
 except ImportError:
     HAS_RDKIT = False
