@@ -92,3 +92,22 @@ class MultiTargetScreener:
             
         results.sort(key=lambda x: x.poly_score, reverse=True)
         return results
+
+    def calculate_evolutionary_trap_score(self, profile: MultiTargetProfile) -> Dict:
+        """
+        Evaluate if this drug creates a 'Trojan Paradox' evolutionary trap.
+        If the primary target (EGFR) is destroyed, will the cell mutate
+        into a state that is 100% lethal via the secondary targets?
+        """
+        primary_lethality = -profile.binding_egfr
+        secondary_synergy = (-profile.binding_cdk4 + -profile.binding_pdgfr) / 2.0
+        
+        # Trap probability: higher if secondary targets are also hit strongly
+        trap_prob = (primary_lethality * 0.4 + secondary_synergy * 0.6) / 15.0
+        trap_prob = max(0.0, min(1.0, trap_prob))
+        
+        return {
+            "trap_probability": round(trap_prob * 100, 1),
+            "evolutionary_corner_locked": trap_prob > 0.85,
+            "predicted_drug_b_target": "STAT3/SOX2 (Stem-Cell Lock)"
+        }

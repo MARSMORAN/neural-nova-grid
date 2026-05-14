@@ -50,32 +50,24 @@ def decode_smiles(indices: List[int]) -> str:
     return "".join(IDX_TO_CHAR.get(i, "") for i in indices)
 
 
-# ── Training data ────────────────────────────────────────────
+# ── Training data: Trojan Metabolites ──────────────────────────
 
-# Known CNS-active / drug-like molecules (SMILES)
-# This is the seed set — gets expanded with ChEMBL data
+# Seed set weaponized for GBM's hyper-metabolism
 SEED_MOLECULES = [
-    # GBM-relevant
-    "Cn1nnc2c(=O)n(cnc12)C(=O)N",                    # Temozolomide
-    "COc1cc2ncnc(Nc3ccc(c(c3)OC)OC)c2cc1OCCOCC",     # Erlotinib (EGFR)
-    "c1ccc(NC(=O)c2ccccn2)cc1",                       # pyridine amide scaffold
-    "CC(C)Cc1ccc(cc1)C(C)C(=O)O",                     # ibuprofen (reference)
-    "CC(=O)Nc1ccc(O)cc1",                              # paracetamol
-    "c1ccnc(c1)C(=O)Nc1ccc(F)cc1",                    # fluoropyridine amide
-    "c1ccc2c(c1)cccc2NC(=O)c1ccncc1",                 # naphthyl amide
-    "OC(=O)c1cccc(NC(=O)c1ccncc1)c1",                 # acid pyridine
-    # Kinase inhibitor scaffolds
-    "c1cc(C(F)(F)F)cc(c1)NC(=O)c1ccccn1",             # CF3-aniline amide
-    "c1ccc(-c2cc3ccccc3o2)cc1",                        # benzofuran
-    "c1ccc(NC(=O)Nc2ccc(F)cc2)cc1",                   # urea scaffold
-    "c1ccc(NC(=O)c2ccc(Cl)cc2)cc1",                   # chlorobenzamide
-    # BBB-penetrant scaffolds
-    "CC1=CC(=O)NC(=S)N1",                              # thymine-like
-    "c1ccncc1C(=O)NC1CCCCC1",                          # pyridine cyclohexyl amide
-    "c1ccoc1C(=O)Nc1ccccc1",                           # furan anilide
-    "c1cc(F)cc(F)c1NC(=O)c1ccncc1",                   # difluoro pyridine
-    "CC(=O)N1CCC(CC1)NC(=O)c1ccncc1",                 # piperidine pyridine
-    "c1ccnc(N)c1C(=O)Nc1ccc(C)cc1",                   # aminopyridine toluamide
+    # Glucose analogs (GLUT1/3 targeting)
+    "OC[C@H]1OC(O)[C@H](O)[C@@H](O)[C@H]1O",            # D-Glucose (Base)
+    "OC[C@H]1OC(NC(=O)c2ccccn2)[C@H](O)[C@@H](O)[C@H]1O", # Glucose-Pyridine Trojan
+    "OC[C@H]1OC(NC(=O)Nc2ccc(F)cc2)[C@H](O)[C@@H](O)[C@H]1O", # Glucose-Urea Trojan
+    # Glutamine analogs (SLC1A5 targeting)
+    "N[C@@H](CCC(=O)N)C(=O)O",                        # L-Glutamine (Base)
+    "NC(CCC(=O)Nc1ccncc1)C(=O)O",                     # Glutamine-Pyridine Trojan
+    "NC(CCC(=O)Nc1ccc(Cl)cc1)C(=O)O",                  # Glutamine-Chlorobenzamide Trojan
+    # Ascorbic Acid analogs (SVCT2 targeting)
+    "OC[C@H](O)[C@H]1OC(=O)C(O)=C1O",                  # Vitamin C (Base)
+    "NC(=O)c1cccc(c1)OC[C@H](O)[C@H]1OC(=O)C(O)=C1O",  # Vitamin C-Amide Trojan
+    # Large neutral amino acid analogs (LAT1 targeting)
+    "N[C@@H](Cc1ccccc1)C(=O)O",                        # Phenylalanine (Base)
+    "NC(Cc1ccc(NC(=O)c2ccncc2)cc1)C(=O)O",             # Phenylalanine-Pyridine Trojan
 ]
 
 
@@ -337,6 +329,19 @@ class MoleculeGenerator:
     def save_model(self, path: str):
         torch.save(self.model.state_dict(), path)
         logger.info(f"Saved generator to {path}")
+
+    def classify_metabolic_trap(self, smiles: str) -> str:
+        """Classify which metabolic pathway this Trojan is exploiting."""
+        s = smiles.lower()
+        if "c1oc(o)[c@h](o)[c@@h](o)[c@h]1o" in s or "c[c@h]1oc(o)" in s:
+            return "Glucose Mimetic (GLUT1/3 Trap)"
+        if "ccc(=o)n)c(=o)o" in s or "ccc(=o)n" in s:
+            return "Glutamine Mimetic (SLC1A5 Trap)"
+        if "oc[c@h](o)[c@h]1oc(=o)c(o)=c1o" in s:
+            return "Ascorbic Acid Mimetic (SVCT2 Trap)"
+        if "cc)c(=o)o" in s or "cc)c(=o)n" in s:
+            return "Amino Acid Mimetic (LAT1 Trap)"
+        return "Broad Metabolic Trojan"
 
     def load_model(self, path: str):
         self.model.load_state_dict(torch.load(path, weights_only=True))
