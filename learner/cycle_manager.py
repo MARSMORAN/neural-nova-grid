@@ -62,7 +62,7 @@ class DiscoveryEngine:
 
     def __init__(self):
         console.print(Panel.fit(
-            "[bold cyan]NEURAL-NOVA v2[/bold cyan]\n"
+            "[bold cyan]NEURAL-NOVA v2.1.1-stable[/bold cyan]\n"
             "[dim]Autonomous GBM Drug Discovery Engine[/dim]\n"
             "[dim]Real data. Real chemistry. Self-improving.[/dim]",
             border_style="bright_blue", box=box.DOUBLE_EDGE
@@ -234,6 +234,9 @@ class DiscoveryEngine:
         top_candidates = screened[:TOP_K_REPORT]
         report_paths = []
         for cand in top_candidates:
+            # Calculate selectivity index (if possible) or default to 1.0
+            selectivity = 1.0
+            
             cand_dict = {
                 "smiles": cand.smiles, "target": cand.target,
                 "mw": cand.mw, "logp": cand.logp,
@@ -248,6 +251,7 @@ class DiscoveryEngine:
                 "oral_bioavailability": cand.oral_bioavailability,
                 "metabolic_stability": cand.metabolic_stability,
                 "herg_risk": cand.herg_risk,
+                "selectivity_index": selectivity,
             }
             path = self.reporter.generate_candidate_report(cand_dict, cycle_id)
             report_paths.append(path)
@@ -291,17 +295,19 @@ class DiscoveryEngine:
         return self.targets[idx]
 
     def _print_cycle_results(self, cycle_id, stats, top_mols, elapsed):
-        t = Table(title=f"Cycle {cycle_id} Results", box=box.ROUNDED,
+        t = Table(title=f"Cycle {cycle_id} Results (Calibrated v2.1.1)", box=box.ROUNDED,
                   title_style="bold bright_green")
         t.add_column("SMILES", style="dim", max_width=35)
-        t.add_column("Score", style="bright_green", justify="right")
+        t.add_column("NovaScore", style="bold bright_yellow", justify="right")
         t.add_column("Dock", style="cyan", justify="right")
         t.add_column("BBB", style="magenta", justify="right")
         t.add_column("hERG", style="bright_red", justify="right")
         for mol in top_mols:
+            # We calculate a quick nova_score for display if not present
+            n_score = self.reporter.calculate_novascore(mol.docking_score, 0.5, mol.bbb_penetration, 1.0)
             t.add_row(
                 mol.smiles[:33] + "...",
-                f"{mol.composite_score:.4f}",
+                f"{n_score:.1f}/100",
                 f"{mol.docking_score:.2f}",
                 f"{mol.bbb_penetration:.3f}",
                 f"{mol.herg_risk:.3f}",

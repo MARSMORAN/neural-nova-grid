@@ -2,8 +2,10 @@ import os
 import json
 import sqlite3
 import uvicorn
+from pathlib import Path
+from datetime import datetime
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
 from pydantic import BaseModel
 from typing import List, Dict
 
@@ -121,14 +123,19 @@ def get_work(batch_size: int = 100):
 
 from engine.report_generator import ReportGenerator
 
-# Setup PDF Reporter
-reporter = ReportGenerator(output_dir="./reports/gen_2_discoveries")
+# Setup PDF Reporters
+local_reporter = ReportGenerator(output_dir="./reports/gen_2_discoveries")
+swarm_reporter = ReportGenerator(output_dir="./reports/swarm_discoveries")
 
 @app.post("/submit_results")
 def submit_results(batch: MoleculeBatch):
     """Worker submits the top docking scores back to the Brain."""
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
+    
+    # Determine which reporter to use
+    is_swarm = batch.worker_id.startswith("swarm_")
+    reporter = swarm_reporter if is_swarm else local_reporter
     
     for mol in batch.molecules:
         score = mol.get("score", 0.0)
@@ -147,21 +154,28 @@ def submit_results(batch: MoleculeBatch):
             c.execute("DELETE FROM queue WHERE smiles = ?", (smiles,))
             
             # NEW: Auto-generate a full research PDF if the score is incredibly good
-            if score <= -8.0:
+            if score <= -7.5:
                 print(f"[+] MASSIVE HIT DETECTED: {score}. Generating Multi-Target PDF...")
-                from rdkit.Chem import QED
-                
+                from rdkit import Chem
+                from rdkit.Chem import QED, Descriptors
+
                 mol = Chem.MolFromSmiles(smiles)
                 if mol is not None:
                     mw = Descriptors.MolWt(mol)
+                    tpsa = Descriptors.TPSA(mol)
+
+                    # --- Descriptor Integrity Guard ---
+                    if mw <= 0 or tpsa < 0:
+                        print(f"[!] INTEGRITY FAILURE: {smiles} - Corrupted Descriptors. Skipping.")
+                        continue
+
                     logp = Descriptors.MolLogP(mol)
                     hbd = Descriptors.NumHDonors(mol)
                     hba = Descriptors.NumHAcceptors(mol)
-                    tpsa = Descriptors.TPSA(mol)
-                    
+
                     # New Rigor Metrics
                     qed_score = QED.qed(mol) # 0 to 1 drug-likeness
-                    
+
                     # Selectivity Index: Ratio of primary target to average of others
                     profile = candidate_data.get("target_profile", {})
                     if profile:
@@ -169,23 +183,16 @@ def submit_results(batch: MoleculeBatch):
                         selectivity = score / avg_off_target if avg_off_target != 0 else 1.0
                     else:
                         selectivity = 1.0
-                    
+
                     bbb_prob = max(0.0, min(1.0, 1.2 - (tpsa/100.0) - (mw/1000.0)))
                     lipinski_violations = sum([mw > 500, logp > 5, hbd > 5, hba > 10])
                     oral_bio = max(0.1, 1.0 - (lipinski_violations * 0.3))
                     met_stab = max(0.1, min(0.9, 1.0 - (logp/10.0) - (hbd/20.0)))
                     herg = max(0.0, min(0.95, (logp - 2.0)/6.0 + (mw - 300)/1000.0))
-                    
-                    # NovaScore™ Unified Confidence Index (0 to 100)
-                    # Higher is better. Weighted for scientific viability.
-                    norm_docking = max(0, min(1, (abs(score) - 5) / 10)) # Normalize -5 to -15 range
-                    nova_score = (
-                        (norm_docking * 40) +      # 40% Docking Power
-                        (qed_score * 25) +         # 25% Drug-likeness
-                        (bbb_prob * 20) +          # 20% CNS Permeability
-                        (min(1.0, selectivity) * 15) # 15% Precision/Selectivity
-                    ) * 10
-                    
+
+                    # NovaScore™ v2.1.1 Bounded Scaling (Centralized)
+                    nova_score = reporter.calculate_novascore(score, qed_score, bbb_prob, selectivity)
+
                     candidate = {
                         "drug_name": "Nova-Validated Discovery",
                         "smiles": smiles,
@@ -206,11 +213,14 @@ def submit_results(batch: MoleculeBatch):
                         "hba": hba,
                         "tpsa": tpsa
                     }
-                    reporter.generate_candidate_report(candidate, cycle_id=999)
-                
+                    try:
+                        reporter.generate_candidate_report(candidate, cycle_id=999)
+                    except Exception as e:
+                        print(f"[!] REPORT GEN FAILURE: {e}")
+
         except Exception as e:
-            pass
-            
+            print(f"[!] SUBMISSION ERROR: {e}")
+
     conn.commit()
     conn.close()
     return {"status": "success"}
@@ -224,6 +234,35 @@ def leaderboard():
     rows = c.fetchall()
     conn.close()
     return [{"smiles": r[0], "score": r[1], "worker_id": r[2]} for r in rows]
+
+@app.get("/reports", response_class=HTMLResponse)
+def list_reports():
+    """Browser-based dashboard to view all discovery dossiers."""
+    reports_base = Path("./reports")
+    if not reports_base.exists():
+        return "<html><body><h1>No reports generated yet.</h1></body></html>"
+    
+    # Glob for both local and swarm reports
+    files = list(reports_base.rglob("*.pdf")) + list(reports_base.rglob("*.txt"))
+    # Filter out summaries and only keep candidate dossiers
+    files = [f for f in files if "cycle_summary" not in f.name]
+    files.sort(key=lambda x: x.stat().st_mtime, reverse=True)
+    
+    html = "<html><head><title>Neural-Nova Discovery Dossiers</title></head><body>"
+    html += "<h1>Neural-Nova Discovery Dossiers (Calibrated)</h1><ul>"
+    for f in files:
+        rel_path = f.relative_to(reports_base)
+        html += f'<li><a href="/reports/download/{rel_path}">{rel_path}</a> ({datetime.fromtimestamp(f.stat().st_mtime).strftime("%Y-%m-%d %H:%M")})</li>'
+    html += "</ul></body></html>"
+    return html
+
+@app.get("/reports/download/{subpath:path}")
+def download_report(subpath: str):
+    """Download a specific report dossier."""
+    report_file = Path("./reports") / subpath
+    if not report_file.exists():
+        raise HTTPException(status_code=404, detail="Report not found")
+    return FileResponse(report_file)
 
 if __name__ == "__main__":
     print("STARTING NEURAL-NOVA GRID BRAIN ON PORT 8000")

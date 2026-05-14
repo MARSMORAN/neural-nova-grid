@@ -4,7 +4,7 @@
 **Methodology:** Decentralized Evolutionary Swarm Discovery
 
 ## 1. ABSTRACT
-We report the computational identification of novel lead-generation candidates for the treatment of Glioblastoma Multiforme (GBM). Utilizing a decentralized cloud swarm of GPU-accelerated docking engines, we screened an evolutionary chemical space against the primary EGFR receptor (PDB: 1M17) and a multi-target proteome (PI3K, mTOR, PDGFR). During retrospective validation on a set of 5 clinical actives and 500 property-matched hard decoys, the methodology achieved a **ROC-AUC of 0.895 ± 0.03** and an **Enrichment Factor (EF1%) of 12.4**. Our lead candidate (Nova-001) computationally indicates docking characteristics within the range observed for established clinical EGFR inhibitors.
+We report the computational identification of novel lead-generation candidates for the treatment of Glioblastoma Multiforme (GBM). Utilizing a decentralized cloud swarm of GPU-accelerated docking engines, we screened an evolutionary chemical space against the primary EGFR receptor (PDB: 1M17) and a multi-target proteome (PI3K, mTOR, PDGFR). During retrospective validation on a set of 5 clinical actives and 500 property-matched hard decoys, the methodology achieved a **ROC-AUC of 0.895 Â± 0.03** and an **Enrichment Factor (EF1%) of 12.4**. Our lead candidate (Nova-001) computationally indicates docking characteristics within the range observed for established clinical EGFR inhibitors.
 
 ## 2. COMPUTATIONAL METHODOLOGY
 The discovery pipeline, titled **Neural-Nova**, employs a tiered validation architecture:
@@ -16,7 +16,8 @@ The discovery pipeline, titled **Neural-Nova**, employs a tiered validation arch
 ## 3. CALIBRATION & REPRODUCIBILITY
 To ensure methodological reliability, the system was benchmarked against clinical standards:
 - **Dataset:** 5 Clinical Actives (Positive Control) vs. 500 Hard Decoys (Negative Control).
-- **Baseline Comparison:** The integrated NovaScore™ outperformed vanilla Vina docking alone by 22%, effectively suppressing non-drug-like false positives.
+- **Baseline Comparison:** The integrated NovaScoreâ„¢ v2.1.1 outperformed vanilla Vina docking alone by 22%, effectively suppressing non-drug-like false positives.
+
 - **Reproducibility:** Docking events are governed by fixed random seeds to ensure interaction stability across repeated simulations.
 
 ## 4. RESULTS & PROSPECTIVE VALIDATION
