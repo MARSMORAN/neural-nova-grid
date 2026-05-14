@@ -39,11 +39,15 @@ WORKER_ID = f"swarm_v2_1_1_{str(uuid.uuid4())[:8]}"
 def simulate_multi_target(smiles: str):
     try:
         from rdkit import Chem
-        from rdkit.Chem import Descriptors
         import subprocess
+        import statistics
         mol = Chem.MolFromSmiles(smiles)
         if not mol: return None
         
+        # Silence RDKit
+        from rdkit import RDLogger
+        RDLogger.DisableLog('rdApp.*')
+
         # --- STEP 1: FAST SCREEN (exhaustiveness=1) ---
         with open("temp.smi", "w") as f: f.write(smiles)
         cmd = ["./smina", "-r", "egfr.pdb", "-l", "temp.smi", "--autobox_ligand", "egfr.pdb", "--exhaustiveness", "1", "--quiet"]
@@ -56,28 +60,35 @@ def simulate_multi_target(smiles: str):
                 screen_score = float(lines[i+1].split()[1])
                 break
         
-        # Screening Threshold
-        if screen_score > -6.5: return None
+        if screen_score > -6.8: return None
         
-        print(f"[*] Potential Hit Detected ({screen_score}). Running Rigorous Validation...")
+        print(f"[*] Potential Hit ({screen_score}). Running Consensus Validation (v8.0)...")
 
-        # --- STEP 2: RIGOROUS CHECK (exhaustiveness=8) ---
-        cmd = ["./smina", "-r", "egfr.pdb", "-l", "temp.smi", "--autobox_ligand", "egfr.pdb", "--exhaustiveness", "8", "--quiet", "--out", "pose.pdbqt"]
-        res = subprocess.run(cmd, capture_output=True, text=True)
-        
-        rigorous_score = 0.0
-        lines = res.stdout.split('\n')
-        for i, line in enumerate(lines):
-            if "-----+------------" in line:
-                rigorous_score = float(lines[i+1].split()[1])
-                break
-        
-        # Final Scientific Rigor Threshold
-        if rigorous_score > -7.0: 
-            print(f"[!] Rigorous check failed ({rigorous_score}). Discarding.")
+        # --- STEP 2: CONSENSUS TRIPLE-TAP (exhaustiveness=10) ---
+        # Run 3 independent simulations to ensure absolute stability
+        consensus_scores = []
+        for run in range(3):
+            seed = random.randint(1, 1000000)
+            cmd = ["./smina", "-r", "egfr.pdb", "-l", "temp.smi", "--autobox_ligand", "egfr.pdb", "--exhaustiveness", "10", "--quiet", "--seed", str(seed)]
+            res = subprocess.run(cmd, capture_output=True, text=True)
+            
+            run_score = 0.0
+            lines = res.stdout.split('\n')
+            for i, line in enumerate(lines):
+                if "-----+------------" in line:
+                    run_score = float(lines[i+1].split()[1])
+                    break
+            consensus_scores.append(run_score)
+
+        avg_score = statistics.mean(consensus_scores)
+        variance = statistics.stdev(consensus_scores) if len(consensus_scores) > 1 else 0
+
+        # Reject if unstable (high variance) or if average is weak
+        if avg_score > -7.5 or variance > 0.8:
+            print(f"[!] Consensus Failed (Avg: {avg_score:.2f}, Var: {variance:.2f}). Rejected.")
             return None
         
-        print(f"[+] Confirmed Rigorous Score: {rigorous_score}")
+        print(f"[+] CONSENSUS VERIFIED: {avg_score:.2f} (Var: {variance:.2f})")
         
         # Cross-Dock against off-targets
         profile = {}
@@ -90,11 +101,7 @@ def simulate_multi_target(smiles: str):
                     profile[t] = float(c_lines[i+1].split()[1])
                     break
         
-        pose = ""
-        if os.path.exists("pose.pdbqt"):
-            with open("pose.pdbqt", "r") as f: pose = f.read()
-            
-        return {"smiles": smiles, "score": rigorous_score, "metadata": {"target_profile": profile, "docked_pose": pose}}
+        return {"smiles": smiles, "score": avg_score, "metadata": {"target_profile": profile, "stochastic_variance": variance}}
     except Exception as e:
         print(f"[!] Docking Error: {e}")
         return None

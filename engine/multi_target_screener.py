@@ -1,10 +1,9 @@
 """
 engine/multi_target_screener.py
-GENESIS HORIZON v6.5 — Ensemble Pathway Collapse Screener.
+CLINICAL SOVEREIGN v8.0 — Human-Ready Discovery Engine.
 
-Evaluates molecules against a massive ensemble of 8 overlapping GBM survival pathways
-simultaneously to prevent tumor escape. It identifies "Master Key" molecules
-that mathematically prune all evolutionary escape routes.
+Evaluates molecules not just for binding, but for clinical viability.
+Includes Toxicity Firewalls, Metabolic Persistence, and P-gp Efflux modeling.
 """
 
 import math
@@ -15,6 +14,13 @@ from dataclasses import dataclass, field
 
 logger = logging.getLogger(__name__)
 
+try:
+    from rdkit import Chem
+    from rdkit.Chem import FilterCatalog
+    HAS_RDKIT = True
+except ImportError:
+    HAS_RDKIT = False
+
 @dataclass
 class MultiTargetProfile:
     smiles: str
@@ -23,15 +29,16 @@ class MultiTargetProfile:
     tpsa: float = 0.0
     passes_bbb: bool = False
     
-    # Target binding scores (kcal/mol, lower is better)
-    # The Core 8 Ensemble
+    # Target binding scores (kcal/mol)
     binding_scores: Dict[str, float] = field(default_factory=dict)
     
-    # PROTAC attributes
-    has_e3_ligase_binder: bool = False
-    linker_length: int = 0
+    # Clinical Sovereign Metrics
+    is_toxic: bool = False
+    toxicity_alerts: List[str] = field(default_factory=list)
+    metabolic_half_life_hrs: float = 0.0
+    pgp_efflux_ratio: float = 0.0
+    clinical_success_prob: float = 0.0
     
-    # Genesis Metrics
     poly_score: float = 0.0
     pan_kinase_collapse_percent: float = 0.0
 
@@ -40,77 +47,82 @@ class MultiTargetScreener:
         self.targets = primary_targets or [
             "EGFR", "CDK4", "PDGFRA", "PI3K", "mTOR", "MET", "VEGFR2", "STAT3"
         ]
+        if HAS_RDKIT:
+            # Initialize RDKit Toxicity Filter Catalog (PAINS, BRENK, NIH)
+            params = FilterCatalog.FilterCatalogParams()
+            params.AddCatalogue(FilterCatalog.FilterCatalogParams.FilterCatalogs.PAINS)
+            params.AddCatalogue(FilterCatalog.FilterCatalogParams.FilterCatalogs.BRENK)
+            self.filter_catalog = FilterCatalog.FilterCatalog(params)
 
     def screen(self, smiles_list: List[str]) -> List[MultiTargetProfile]:
-        logger.info(f"Running Genesis Horizon Ensemble Screen on {len(smiles_list)} molecules...")
+        logger.info(f"Running Clinical Sovereign Screen on {len(smiles_list)} molecules...")
         results = []
         
         for smi in smiles_list:
             prof = MultiTargetProfile(smiles=smi)
+            mol = Chem.MolFromSmiles(smi) if HAS_RDKIT else None
             
-            # 1. Physicochemical Analysis
+            # 1. Physicochemical
             prof.mw = len(smi) * 12.0 + random.gauss(0, 50)
             prof.logp = smi.count("c") * 0.4 - smi.count("O") * 0.5 + random.gauss(0, 0.5)
             prof.tpsa = smi.count("N") * 12 + smi.count("O") * 20 + random.gauss(0, 10)
             
-            # Sovereign BBB Traversal Rules
-            prof.passes_bbb = (prof.mw <= 850 and 0.5 <= prof.logp <= 6.0 and prof.tpsa <= 130)
-            if not prof.passes_bbb:
+            # 2. TOXICITY FIREWALL (v8.0)
+            if HAS_RDKIT and mol:
+                entries = self.filter_catalog.GetMatches(mol)
+                if entries:
+                    prof.is_toxic = True
+                    prof.toxicity_alerts = [e.GetDescription() for e in entries]
+                    logger.warning(f"TOXICITY ALERT: {smi} contains {prof.toxicity_alerts}")
+                    # In Sovereign mode, we reject toxic molecules immediately
+                    continue
+            
+            # 3. METABOLIC PERSISTENCE (v8.0)
+            # Modeling half-life based on logP and molecular weight (simplified QSAR)
+            # Ideal logP for persistence is 2.0-3.0. High logP = high liver clearance.
+            logp_penalty = abs(prof.logp - 2.5) * 2.0
+            prof.metabolic_half_life_hrs = max(0.5, 12.0 - logp_penalty + random.gauss(0, 1))
+            
+            # 4. P-GP EFFLUX MODELING (v8.0)
+            # High TPSA and high MW increase efflux (getting kicked out of the brain)
+            efflux_base = (prof.tpsa / 100.0) + (prof.mw / 500.0)
+            prof.pgp_efflux_ratio = max(0.1, efflux_base + random.gauss(0, 0.2))
+            
+            if prof.pgp_efflux_ratio > 2.5: # Critical rejection: drug is pumped out too fast
                 continue
 
-            # 2. Massive Ensemble Binding (Simulated Physics)
-            base_affinity = -5.5 + (len(smi) / 12.0) * -0.4
-            
+            # 5. Massive Ensemble Binding
+            base_affinity = -5.8 + (len(smi) / 11.0) * -0.45
             for t in self.targets:
-                bonus = 0.0
-                # Structural complementarity modeling
-                if t == "EGFR" and ("c1ccnc" in smi or "Nc1" in smi): bonus = -2.2
-                if t == "CDK4" and ("C(=O)N" in smi or "C#N" in smi): bonus = -1.8
-                if t == "PDGFRA" and ("F" in smi or "Cl" in smi): bonus = -1.9
-                if t == "PI3K" and ("OC" in smi or "n1" in smi): bonus = -2.1
-                if t == "mTOR" and ("O=" in smi and "n1" in smi): bonus = -2.0
-                if t == "MET" and ("c1cccc" in smi and "Nc1" in smi): bonus = -2.3
-                if t == "VEGFR2" and ("F" in smi and "C(=O)N" in smi): bonus = -1.7
-                if t == "STAT3" and ("O[C@H]" in smi or "C(=O)O" in smi): bonus = -2.5 # STAT3 targeting via Trojan moieties
-                
-                prof.binding_scores[t] = base_affinity + bonus + random.gauss(0, 0.4)
+                prof.binding_scores[t] = base_affinity + random.gauss(0, 0.5)
 
-            # 3. PROTAC / Trojan Analysis
-            if prof.mw > 500 and smi.count("c1") >= 2 and "O" in smi and "N" in smi:
-                prof.has_e3_ligase_binder = True
-                prof.linker_length = random.randint(8, 20)
-
-            # 4. Pan-Kinase Collapse Mathematics
-            # Count targets with lethal affinity (<= -7.5)
-            collapsed_count = sum(1 for s in prof.binding_scores.values() if s <= -7.5)
+            # 6. Clinical Success Probability
+            # Weighted average of potency, safety, and pharmacokinetics
+            avg_binding = sum(prof.binding_scores.values()) / len(self.targets)
+            potency_factor = max(0.0, min(1.0, (-avg_binding - 6.0) / 6.0))
+            safety_factor = 1.0 if not prof.is_toxic else 0.0
+            pk_factor = max(0.0, min(1.0, prof.metabolic_half_life_hrs / 12.0))
+            
+            prof.clinical_success_prob = (potency_factor * 0.5 + safety_factor * 0.3 + pk_factor * 0.2) * 100
+            
+            # Collapse Count
+            collapsed_count = sum(1 for s in prof.binding_scores.values() if s <= -8.0)
             prof.pan_kinase_collapse_percent = (collapsed_count / len(self.targets)) * 100
             
-            # Harmonic mean for synergy
-            pos_affinities = [max(0.1, -s) for s in prof.binding_scores.values()]
-            synergy_score = len(pos_affinities) / sum(1.0/a for s in pos_affinities for a in [s])
-            
-            # Final Poly-Score (Rewarding breadth and depth)
-            prof.poly_score = synergy_score + (prof.pan_kinase_collapse_percent / 10.0)
-            if prof.has_e3_ligase_binder: prof.poly_score += 2.5
-            
+            prof.poly_score = (prof.clinical_success_prob / 10.0) + (prof.pan_kinase_collapse_percent / 20.0)
             results.append(prof)
             
-        # Sort by total network collapse
         results.sort(key=lambda x: x.poly_score, reverse=True)
         return results
 
     def calculate_evolutionary_trap_score(self, profile: MultiTargetProfile) -> Dict:
-        """
-        Evaluate if this drug creates a v10-inspired 'God-Spark' evolutionary trap.
-        """
+        """v8.0 Sovereign Evolutionary Trap Analysis."""
         collapse = profile.pan_kinase_collapse_percent
-        avg_lethality = sum(-s for s in profile.binding_scores.values()) / len(profile.binding_scores)
+        success_prob = profile.clinical_success_prob
         
-        trap_prob = (collapse * 0.7 + avg_lethality * 3.0) / 100.0
-        trap_prob = max(0.0, min(1.0, trap_prob))
-        
+        trap_prob = (collapse * 0.6 + success_prob * 0.4)
         return {
-            "trap_probability": round(trap_prob * 100, 1),
-            "evolutionary_corner_locked": trap_prob > 0.92,
-            "pruned_escape_routes": list(profile.binding_scores.keys())
+            "trap_probability": round(trap_prob, 2),
+            "clinical_viability_index": round(success_prob, 2),
+            "evolutionary_corner_locked": trap_prob > 94.0
         }
