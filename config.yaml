@@ -1,9 +1,10 @@
 # ─────────────────────────────────────────────────────────────
-# Neural-Nova v2 — Autonomous GBM Drug Discovery Engine
+# Neural-Nova v8.0 Sovereign — Autonomous GBM Eradication Engine
 # ─────────────────────────────────────────────────────────────
 
 project:
-  name: "Neural-Nova v2"
+  name: "Neural-Nova v8.0 Sovereign"
+  version: "8.0-stable"
   data_dir: "./data"
   reports_dir: "./reports"
   models_dir: "./models"

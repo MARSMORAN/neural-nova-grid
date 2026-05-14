@@ -9,5 +9,8 @@ print(f"--- SWARM LIVE TELEMETRY ---")
 print(f"Pending Generation-2: {p}")
 print(f"Currently in 3D Physics Simulation: {pr}")
 print(f"Total Completed Hits: {r}")
-print(f"Current Global Record: {best:.4f} kcal/mol")
+if best is not None:
+    print(f"Current Global Record: {best:.4f} kcal/mol")
+else:
+    print(f"Current Global Record: N/A")
 print(f"-----------------------------")

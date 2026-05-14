@@ -8,7 +8,7 @@ logging.basicConfig(level=logging.INFO,
                     format="%(asctime)s [%(levelname)s] %(message)s")
 
 print("=" * 60)
-print("NEURAL-NOVA v2 — DATA HARVESTER TEST")
+print("NEURAL-NOVA v8.0 Sovereign — DATA HARVESTER TEST")
 print("Pulling REAL data from public APIs...")
 print("=" * 60)
 

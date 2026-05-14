@@ -113,5 +113,5 @@ def massive_seed(target_count: int = 10000):
     conn.close()
 
 if __name__ == "__main__":
-    # For demonstration, we target 10,000. In reality, you'd set this to 10,000,000
-    massive_seed(target_count=10000)
+    # For demonstration, we target 50,000. In reality, you'd set this to 10,000,000
+    massive_seed(target_count=50000)

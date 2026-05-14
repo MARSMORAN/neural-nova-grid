@@ -1,6 +1,6 @@
 """
 engine/repurposer.py
-Drug Repurposing Engine for Neural-Nova v2.
+Drug Repurposing Engine for Neural-Nova v8.0 Sovereign.
 
 Instead of generating unproven molecules, this module pulls thousands of 
 FDA-approved (Phase 4) drugs from ChEMBL and screens them against our 

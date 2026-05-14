@@ -2,24 +2,24 @@
 NEURAL-NOVA v2 — CYCLE 0 SUMMARY
 ======================================================================
 
-Molecules Generated:   196
+Molecules Generated:   154
 Passed Screening:      30
 Simulated in Twin:     0
 Reports Generated:     5
-Best Composite Score:  0.4817
-Target Used:           MGMT
-Elapsed Time:          11.3s
+Best Composite Score:  0.5131
+Target Used:           EGFR
+Elapsed Time:          37.0s
 
 --- TOP CANDIDATES THIS CYCLE ---
-   1. CC(C)Cc1ccc(cc1)ccc1                        score=0.4817  BBB=0.972
-   2. c1cc(-cc2)ccc1                              score=0.4696  BBB=0.975
-   3. c1ccc(NC(=O)c2ccccn2)cc1                    score=0.4680  BBB=0.846
-   4. c1c(O)cc(-c2cc3ccccc3o2)cc1                 score=0.4596  BBB=0.846
-   5. c1c(Cl)cc(NC(=O)c2ccccn2)cc1                score=0.4373  BBB=0.721
-   6. c1ccoc1N(=O)Nc1ccccc1                       score=0.4329  BBB=0.748
-   7. c1ccc(NC(=O)2ccccn2)cc1                     score=0.4278  BBB=0.582
-   8. c1ccc(-c2cc3cccccc3o2)cc1                   score=0.4234  BBB=0.934
-   9. c1cc(F)cc(F)c1cc1                           score=0.4171  BBB=0.889
-  10. c1cccnc1C(=O)NC1CCCCC1                      score=0.4140  BBB=0.852
+   1. c1ccoc1C(=O)NC1CCCCC1                       score=0.5131  BBB=0.825
+   2. CC2c1ccc2cc(cc1)C(C)C(=O)O                  score=0.4833  BBB=0.715
+   3. c1ccc2c(c3cccccc32)cc1                      score=0.4822  BBB=0.960
+   4. CC(C)Cc1c(CC)cc(cc1)C(C)C(=O)O              score=0.4754  BBB=0.733
+   5. C(C)c1cccc(NC(=O)c1ccncc1)c1                score=0.4688  BBB=0.608
+   6. c1ccoc1C(=O)Nc1c(F)cccc1                    score=0.4635  BBB=0.843
+   7. c1ccncc1C(=O)NC1CCCCCC1                     score=0.4596  BBB=0.708
+   8. c1ccoc1C(=O)Oc1ccccc1                       score=0.4582  BBB=0.781
+   9. c1cc(F)cc(F)c1OC(=O)c1ccncc1                score=0.4546  BBB=0.737
+  10. c1ccc(NC(=O)c2ccc(C)cc2)cc1                 score=0.4500  BBB=0.790
 
 ======================================================================

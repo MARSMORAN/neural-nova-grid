@@ -50,8 +50,8 @@ class MultiTargetScreener:
         if HAS_RDKIT:
             # Initialize RDKit Toxicity Filter Catalog (PAINS, BRENK, NIH)
             params = FilterCatalog.FilterCatalogParams()
-            params.AddCatalogue(FilterCatalog.FilterCatalogParams.FilterCatalogs.PAINS)
-            params.AddCatalogue(FilterCatalog.FilterCatalogParams.FilterCatalogs.BRENK)
+            params.AddCatalog(FilterCatalog.FilterCatalogParams.FilterCatalogs.PAINS)
+            params.AddCatalog(FilterCatalog.FilterCatalogParams.FilterCatalogs.BRENK)
             self.filter_catalog = FilterCatalog.FilterCatalog(params)
 
     def screen(self, smiles_list: List[str]) -> List[MultiTargetProfile]:

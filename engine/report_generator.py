@@ -167,8 +167,8 @@ class ReportGenerator:
         # ── SECTION III: EVOLUTIONARY DEAD-END ──────────────────
         elements.append(Paragraph("III. GENETIC DIVERSITY STRESS-TEST", heading_style))
         elements.append(Paragraph(
-            "The engine simulated binding across 10 distinct GBM patient mutations. The candidate maintained "
-            "sub-nanomolar potency ($\leq -9.0$ kcal/mol) across 100% of the virtual population, identifying it "
+            r"The engine simulated binding across 10 distinct GBM patient mutations. The candidate maintained "
+            r"sub-nanomolar potency ($\leq -9.0$ kcal/mol) across 100% of the virtual population, identifying it "
             "as a <b>Universal Master Key</b> for Glioblastoma.", body_style
         ))
         

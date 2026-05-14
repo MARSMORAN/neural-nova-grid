@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Neural-Nova v2 — Autonomous GBM Drug Discovery Engine
+Neural-Nova v8.0 Sovereign — Autonomous GBM Eradication Engine
 Entry point: python main.py
 """
 

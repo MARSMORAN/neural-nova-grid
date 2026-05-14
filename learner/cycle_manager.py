@@ -1,8 +1,8 @@
 """
 learner/cycle_manager.py
-Autonomous Discovery Loop — the brain of Neural-Nova v2.
+Autonomous Discovery Loop — the brain of Neural-Nova v8.0 Sovereign.
 
-Orchestrates: Data Harvest → Target ID → Generate → Screen → Report → Learn → Repeat
+Orchestrates: Data Harvest -> Target ID -> Generate -> Screen -> Report -> Learn -> Repeat
 """
 
 import sys
@@ -57,12 +57,12 @@ CONVERGENCE_DELTA = 0.005
 class DiscoveryEngine:
     """
     The autonomous GBM drug discovery engine.
-    Runs in a continuous loop: generate → screen → learn → repeat.
+    Runs in a continuous loop: generate -> screen -> learn -> repeat.
     """
 
     def __init__(self):
         console.print(Panel.fit(
-            "[bold cyan]NEURAL-NOVA v2.1.1-stable[/bold cyan]\n"
+            "[bold cyan]NEURAL-NOVA v8.0 Sovereign — Clinical Outcome Predictor[/bold cyan]\n"
             "[dim]Autonomous GBM Drug Discovery Engine[/dim]\n"
             "[dim]Real data. Real chemistry. Self-improving.[/dim]",
             border_style="bright_blue", box=box.DOUBLE_EDGE
@@ -321,10 +321,7 @@ class DiscoveryEngine:
     # ── Phase 3: Self-Improvement ─────────────────────────────
 
     def learn_and_adapt(self, cycle_id: int):
-        """
-        Retrain the generator on winning molecules.
-        Adjust target priorities based on what's working.
-        """
+        """Retrain the generator on top performing candidates."""
         if cycle_id > 0 and cycle_id % RETRAIN_EVERY == 0:
             console.print(f"\n  [bright_yellow]Retraining generator "
                            f"on top molecules...[/bright_yellow]")

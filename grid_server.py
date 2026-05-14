@@ -11,7 +11,7 @@ from typing import List, Dict
 
 from fastapi.staticfiles import StaticFiles
 
-app = FastAPI(title="Neural-Nova Grid Brain v2")
+app = FastAPI(title="Neural-Nova Sovereign Brain v8.0")
 
 # Serve targets for the swarm
 if not os.path.exists("./targets"):
@@ -30,26 +30,27 @@ def get_dashboard():
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Neural-Nova Mothership</title>
+        <title>Neural-Nova Sovereign v8.0</title>
         <style>
             body { background-color: #050510; color: #00ffcc; font-family: 'Courier New', monospace; text-align: center; margin-top: 50px; }
-            h1 { text-shadow: 0 0 10px #00ffcc; font-size: 3em; }
-            .panel { background: rgba(0, 255, 204, 0.05); border: 1px solid #00ffcc; padding: 20px; width: 60%; margin: 0 auto; box-shadow: 0 0 20px rgba(0, 255, 204, 0.2); }
+            h1 { text-shadow: 0 0 10px #00ffcc; font-size: 3.2em; font-weight: bold; }
+            .panel { background: rgba(0, 255, 204, 0.05); border: 1px solid #00ffcc; padding: 20px; width: 70%; margin: 0 auto; box-shadow: 0 0 30px rgba(0, 255, 204, 0.2); }
             table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-            th, td { border-bottom: 1px solid #00ffcc; padding: 10px; text-align: left; }
-            th { background: rgba(0, 255, 204, 0.2); }
+            th, td { border-bottom: 1px solid #00ffcc; padding: 12px; text-align: left; }
+            th { background: rgba(0, 255, 204, 0.2); text-transform: uppercase; letter-spacing: 2px; }
             .glow { animation: pulse 2s infinite; }
-            @keyframes pulse { 0% { opacity: 0.8; } 50% { opacity: 1; text-shadow: 0 0 15px #00ffcc; } 100% { opacity: 0.8; } }
+            @keyframes pulse { 0% { opacity: 0.8; } 50% { opacity: 1; text-shadow: 0 0 20px #00ffcc; } 100% { opacity: 0.8; } }
+            .v8-tag { color: #ff0066; font-weight: bold; border: 1px solid #ff0066; padding: 2px 8px; border-radius: 4px; font-size: 0.8em; vertical-align: middle; }
         </style>
     </head>
     <body>
-        <h1 class="glow">NEURAL-NOVA COMMAND CENTER</h1>
+        <h1 class="glow">SOVEREIGN MISSION CONTROL <span class="v8-tag">v8.0</span></h1>
         <div class="panel">
-            <h2>LIVE SWARM LEADERBOARD</h2>
-            <p>Awaiting incoming telemetry from GitHub/Colab drone nodes...</p>
+            <h2>GLOBAL DISCOVERY TELEMETRY</h2>
+            <p>Awaiting high-rigor data from Sovereign Swarm nodes...</p>
             <table>
-                <thead><tr><th>Target Molecule (SMILES)</th><th>Binding Score</th><th>Drone ID</th></tr></thead>
-                <tbody id="board"><tr><td colspan="3">Scanning sector...</td></tr></tbody>
+                <thead><tr><th>Candidate Signature (SMILES)</th><th>Binding Score (\u0394G)</th><th>Drone ID</th></tr></thead>
+                <tbody id="board"><tr><td colspan="3">Synchronizing with swarm...</td></tr></tbody>
             </table>
         </div>
         <script>
@@ -60,7 +61,7 @@ def get_dashboard():
                     if(data.length > 0) {
                         let html = '';
                         data.forEach(d => {
-                            html += `<tr><td>${d.smiles.substring(0, 40)}...</td><td>${d.score.toFixed(3)}</td><td>${d.worker_id}</td></tr>`;
+                            html += `<tr><td><code>${d.smiles.substring(0, 45)}...</code></td><td><b>${d.score.toFixed(3)}</b> kcal/mol</td><td>${d.worker_id}</td></tr>`;
                         });
                         document.getElementById('board').innerHTML = html;
                     }
@@ -121,6 +122,26 @@ def get_work(batch_size: int = 100):
     
     return {"smiles_list": smiles_list}
 
+class SMILESBatch(BaseModel):
+    smiles_list: List[str]
+
+@app.post("/push_to_queue")
+def push_to_queue(batch: SMILESBatch):
+    """Remote generator pushes new SMILES into the Mothership queue."""
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    inserted = 0
+    for smiles in batch.smiles_list:
+        try:
+            c.execute("INSERT OR IGNORE INTO queue (smiles) VALUES (?)", (smiles,))
+            if c.rowcount > 0:
+                inserted += 1
+        except:
+            pass
+    conn.commit()
+    conn.close()
+    return {"status": "success", "inserted": inserted}
+
 from engine.report_generator import ReportGenerator
 
 # Setup PDF Reporters
@@ -144,79 +165,29 @@ def submit_results(batch: MoleculeBatch):
         
         try:
             # Store result
-            # SCIENTIFIC CALIBRATION: We now log EVERYTHING (even bad scores) to build ROC-AUC curves
             c.execute("""
                 INSERT OR REPLACE INTO results (smiles, score, worker_id, target_profile)
                 VALUES (?, ?, ?, ?)
             """, (smiles, score, batch.worker_id, json.dumps(candidate_data.get("target_profile", {}))))
             
-            # Remove from queue if it was there
+            # Remove from queue
             c.execute("DELETE FROM queue WHERE smiles = ?", (smiles,))
             
-            # NEW: Auto-generate a full research PDF if the score is incredibly good
-            if score <= -7.5:
-                print(f"[+] MASSIVE HIT DETECTED: {score}. Generating Multi-Target PDF...")
-                from rdkit import Chem
-                from rdkit.Chem import QED, Descriptors
-
-                mol = Chem.MolFromSmiles(smiles)
-                if mol is not None:
-                    mw = Descriptors.MolWt(mol)
-                    tpsa = Descriptors.TPSA(mol)
-
-                    # --- Descriptor Integrity Guard ---
-                    if mw <= 0 or tpsa < 0:
-                        print(f"[!] INTEGRITY FAILURE: {smiles} - Corrupted Descriptors. Skipping.")
-                        continue
-
-                    logp = Descriptors.MolLogP(mol)
-                    hbd = Descriptors.NumHDonors(mol)
-                    hba = Descriptors.NumHAcceptors(mol)
-
-                    # New Rigor Metrics
-                    qed_score = QED.qed(mol) # 0 to 1 drug-likeness
-
-                    # Selectivity Index: Ratio of primary target to average of others
-                    profile = candidate_data.get("target_profile", {})
-                    if profile:
-                        avg_off_target = sum(profile.values()) / len(profile)
-                        selectivity = score / avg_off_target if avg_off_target != 0 else 1.0
-                    else:
-                        selectivity = 1.0
-
-                    bbb_prob = max(0.0, min(1.0, 1.2 - (tpsa/100.0) - (mw/1000.0)))
-                    lipinski_violations = sum([mw > 500, logp > 5, hbd > 5, hba > 10])
-                    oral_bio = max(0.1, 1.0 - (lipinski_violations * 0.3))
-                    met_stab = max(0.1, min(0.9, 1.0 - (logp/10.0) - (hbd/20.0)))
-                    herg = max(0.0, min(0.95, (logp - 2.0)/6.0 + (mw - 300)/1000.0))
-
-                    # NovaScore™ v2.1.1 Bounded Scaling (Centralized)
-                    nova_score = reporter.calculate_novascore(score, qed_score, bbb_prob, selectivity)
-
-                    candidate = {
-                        "drug_name": "Nova-Validated Discovery",
-                        "smiles": smiles,
-                        "target": "EGFR + PI3K/mTOR/PDGFR",
-                        "nova_score": nova_score,
-                        "composite_score": score,
-                        "docking_score": score,
-                        "target_profile": profile,
-                        "selectivity_index": selectivity,
-                        "qed": qed_score,
-                        "bbb_penetration": bbb_prob,
-                        "oral_bioavailability": oral_bio,
-                        "metabolic_stability": met_stab,
-                        "herg_risk": herg,
-                        "mw": mw,
-                        "logp": logp,
-                        "hbd": hbd,
-                        "hba": hba,
-                        "tpsa": tpsa
-                    }
-                    try:
-                        reporter.generate_candidate_report(candidate, cycle_id=999)
-                    except Exception as e:
-                        print(f"[!] REPORT GEN FAILURE: {e}")
+            # Trigger Sovereign v8.0 Report Generation for High-Potency Hits
+            if score <= -8.0:
+                print(f"[+] SOVEREIGN HIT DETECTED: {score}. Generating Clinical Dossier...")
+                
+                # Pass all gathered metadata to the reporter
+                candidate = {
+                    "smiles": smiles,
+                    "docking_score": score,
+                    "target_profile": candidate_data.get("target_profile", {}),
+                    "stochastic_variance": candidate_data.get("stochastic_variance", 0.0)
+                }
+                try:
+                    reporter.generate_candidate_report(candidate, cycle_id=800)
+                except Exception as e:
+                    print(f"[!] REPORT GEN FAILURE: {e}")
 
         except Exception as e:
             print(f"[!] SUBMISSION ERROR: {e}")
