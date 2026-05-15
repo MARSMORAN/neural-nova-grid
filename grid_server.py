@@ -11,7 +11,7 @@ from typing import List, Dict
 
 from fastapi.staticfiles import StaticFiles
 
-app = FastAPI(title="Neural-Nova Sovereign Brain v8.0")
+app = FastAPI(title="Neural-Nova Sovereign Brain v8.5 PRO")
 
 # Serve targets for the swarm
 if not os.path.exists("./targets"):
@@ -30,11 +30,11 @@ def get_dashboard():
     <!DOCTYPE html>
     <html>
     <head>
-        <title>Neural-Nova Sovereign v8.0</title>
+        <title>Neural-Nova Sovereign v8.5 PRO</title>
         <style>
             body { background-color: #050510; color: #00ffcc; font-family: 'Courier New', monospace; text-align: center; margin-top: 50px; }
             h1 { text-shadow: 0 0 10px #00ffcc; font-size: 3.2em; font-weight: bold; }
-            .panel { background: rgba(0, 255, 204, 0.05); border: 1px solid #00ffcc; padding: 20px; width: 70%; margin: 0 auto; box-shadow: 0 0 30px rgba(0, 255, 204, 0.2); }
+            .panel { background: rgba(0, 255, 204, 0.05); border: 1px solid #00ffcc; padding: 20px; width: 75%; margin: 0 auto; box-shadow: 0 0 30px rgba(0, 255, 204, 0.2); }
             table { width: 100%; border-collapse: collapse; margin-top: 20px; }
             th, td { border-bottom: 1px solid #00ffcc; padding: 12px; text-align: left; }
             th { background: rgba(0, 255, 204, 0.2); text-transform: uppercase; letter-spacing: 2px; }
@@ -44,10 +44,10 @@ def get_dashboard():
         </style>
     </head>
     <body>
-        <h1 class="glow">SOVEREIGN MISSION CONTROL <span class="v8-tag">v8.0</span></h1>
+        <h1 class="glow">SOVEREIGN MISSION CONTROL <span class="v8-tag">v8.5 PRO</span></h1>
         <div class="panel">
             <h2>GLOBAL DISCOVERY TELEMETRY</h2>
-            <p>Awaiting high-rigor data from Sovereign Swarm nodes...</p>
+            <p>Awaiting high-rigor clinical data from Sovereign Swarm nodes...</p>
             <table>
                 <thead><tr><th>Candidate Signature (SMILES)</th><th>Binding Score (\u0394G)</th><th>Drone ID</th></tr></thead>
                 <tbody id="board"><tr><td colspan="3">Synchronizing with swarm...</td></tr></tbody>

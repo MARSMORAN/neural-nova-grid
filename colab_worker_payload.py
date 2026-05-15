@@ -84,10 +84,10 @@ def simulate_clinical_validation(smiles: str):
         
         print(f"[+] CLINICAL LEAD VERIFIED: {avg_score:.2f} (Stochastic Stability: {variance:.3f})")
         
-        # Off-Target Kinase Panel
+        # Off-Target Kinase Panel (v8.5 Precision)
         profile = {}
         for t in ["pi3k", "mtor", "pdgfr"]:
-            cmd = ["./smina", "-r", f"{t}.pdb", "-l", "temp.smi", "--autobox_ligand", f"{t}.pdb", "--exhaustiveness", "1", "--quiet"]
+            cmd = ["./smina", "-r", f"{t}.pdb", "-l", "temp.smi", "--autobox_ligand", f"{t}.pdb", "--exhaustiveness", "4", "--quiet"]
             c_res = subprocess.run(cmd, capture_output=True, text=True)
             c_lines = c_res.stdout.split('\n')
             for i, l in enumerate(c_lines):
@@ -110,8 +110,14 @@ def simulate_clinical_validation(smiles: str):
 
 def run_worker_loop():
     print(f"[*] NEURAL-NOVA v8.5 PRO NODE {WORKER_ID} ONLINE.")
+    start_time = time.time()
+    processed_count = 0
+    
     while True:
         try:
+            uptime_hrs = (time.time() - start_time) / 3600
+            print(f"[dim][Uptime: {uptime_hrs:.2f}h | Sessions: {processed_count}][/dim]")
+            
             resp = requests.get(f"{BRAIN_URL}/get_work?batch_size=10", headers={"ngrok-skip-browser-warning": "true"}, timeout=15)
             smiles = resp.json().get("smiles_list", [])
             if not smiles: 
@@ -121,6 +127,7 @@ def run_worker_loop():
             for s in smiles:
                 r = simulate_clinical_validation(s)
                 if r: results.append(r)
+                processed_count += 1
             
             if results:
                 print(f"[+] Submitting {len(results)} validated clinical leads...")
