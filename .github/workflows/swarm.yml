@@ -1,34 +1,36 @@
-name: Neural-Nova Swarm Worker
+name: Apex v32.0 Swarm Frontier
 on:
   schedule:
-    - cron: '*/30 * * * *'  # Trigger automatically every 30 minutes
-  workflow_dispatch:        # Allow manual triggering
+    - cron: '*/30 * * * *'  # Pulse every 30 minutes
+  workflow_dispatch:        # Manual hyper-scale trigger
 
 jobs:
-  run-worker:
+  apex-drone:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        # This spawns 10 parallel servers simultaneously!
-        worker-node: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        # Spawning 20 high-performance virtual drones per pulse
+        node-id: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     
     steps:
-    - name: Checkout Code
+    - name: Checkout Neural-Nova Stack
       uses: actions/checkout@v3
 
-    - name: Set up Python
+    - name: Set up High-Fidelity Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.10'
+        python-version: '3.11'
 
-    - name: Install Dependencies
+    - name: Install Apex Dependencies
       run: |
-        pip install requests rdkit-pypi
-        sudo apt-get install autodock-vina -y
+        pip install requests rdkit-pypi numpy torch
+        # Note: Smina download is handled within colab_worker_payload.py setup_env()
 
-    - name: Run Swarm Drone
+    - name: Deploy Apex Drone Node
       env:
-        BRAIN_URL: ${{ secrets.NGROK_URL }}
+        BRAIN_URL: ${{ secrets.BRAIN_URL }}
       run: |
-        # Run the local Gen 2.5 worker for 25 minutes
+        # Every node runs for 25 minutes to ensure rotation and stability
+        # The worker will fetch and process leads using the v32.0 multi-pass logic
         timeout 25m python colab_worker_payload.py || exit 0
