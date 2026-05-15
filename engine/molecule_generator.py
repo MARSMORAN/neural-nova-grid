@@ -52,24 +52,25 @@ def decode_smiles(indices: List[int]) -> str:
     return "".join(IDX_TO_CHAR.get(i, "") for i in indices)
 
 
-# ── Training data: Trojan Metabolites ──────────────────────────
+# ── Training data: Priority Fragments ──────────────────────────
 
-# Seed set weaponized for GBM's hyper-metabolism
+# Seed set weaponized for CNS-Druglike Kinase Inhibition
 SEED_MOLECULES = [
-    # Glucose analogs (GLUT1/3 targeting)
-    "OC[C@H]1OC(O)[C@H](O)[C@@H](O)[C@H]1O",            # D-Glucose (Base)
-    "OC[C@H]1OC(NC(=O)c2ccccn2)[C@H](O)[C@@H](O)[C@H]1O", # Glucose-Pyridine Trojan
-    "OC[C@H]1OC(NC(=O)Nc2ccc(F)cc2)[C@H](O)[C@@H](O)[C@H]1O", # Glucose-Urea Trojan
-    # Glutamine analogs (SLC1A5 targeting)
-    "N[C@@H](CCC(=O)N)C(=O)O",                        # L-Glutamine (Base)
-    "NC(CCC(=O)Nc1ccncc1)C(=O)O",                     # Glutamine-Pyridine Trojan
-    "NC(CCC(=O)Nc1ccc(Cl)cc1)C(=O)O",                  # Glutamine-Chlorobenzamide Trojan
-    # Ascorbic Acid analogs (SVCT2 targeting)
-    "OC[C@H](O)[C@H]1OC(=O)C(O)=C1O",                  # Vitamin C (Base)
-    "NC(=O)c1cccc(c1)OC[C@H](O)[C@H]1OC(=O)C(O)=C1O",  # Vitamin C-Amide Trojan
-    # Large neutral amino acid analogs (LAT1 targeting)
-    "N[C@@H](Cc1ccccc1)C(=O)O",                        # Phenylalanine (Base)
-    "NC(Cc1ccc(NC(=O)c2ccncc2)cc1)C(=O)O",             # Phenylalanine-Pyridine Trojan
+    # --- Apex Mankind v32.0 - Historical Knowledge Integration ---
+    "CN(C)CCN(C)c1cc(Nc2nccc(n2)c2c(C)cn(C)c2c2ccccc2)c(OC)cc1NC(=O)C=C",
+    "COc1cc2ncnc(Nc3ccc(F)c(Cl)c3)c2cc1OCCCN1CCOCC1",
+    "COCc1cc2c(cc1OC)ncnc2Nc1cccc(c1)C#C",
+    "Cn1cnc2c1c(=O)n(nc2N)C(=O)N",
+    "CN(C)C(=N)N=C(N)N",
+    # Small, CNS-druglike Kinase Fragments (MW < 350, TPSA < 70)
+    "c1cc(N)cnc1C(=O)N",               # Aminopyridine amide
+    "Cc1cnc(Nc2ccccc2)nc1",            # Aminopyrimidine fragment
+    "O=C(Nc1ccccc1)c1ccncc1",          # Phenyl-nicotinamide
+    "c1ccc(Nc2ncnc3[nH]ccc23)cc1",     # Phenyl-pyrrolo[2,3-d]pyrimidine
+    "Cc1ccc2nc(Nc3ccccc3)nc(C)c2c1",   # CNS-optimized quinazoline
+    # Priority Fragments (Reduced set, smaller versions)
+    "OC[C@H]1OC(O)[C@H](O)[C@@H](O)[C@H]1O",            # D-Glucose
+    "N[C@@H](Cc1ccccc1)C(=O)O",                        # Phenylalanine
 ]
 
 
@@ -332,18 +333,18 @@ class MoleculeGenerator:
         torch.save(self.model.state_dict(), path)
         logger.info(f"Saved generator to {path}")
 
-    def classify_metabolic_trap(self, smiles: str) -> str:
-        """Classify which metabolic pathway this Trojan is exploiting."""
+    def classify_metabolic_target(self, smiles: str) -> str:
+        """Classify which metabolic pathway this scaffold is targeting."""
         s = smiles.lower()
         if "c1oc(o)[c@h](o)[c@@h](o)[c@h]1o" in s or "c[c@h]1oc(o)" in s:
-            return "Glucose Mimetic (GLUT1/3 Trap)"
+            return "Glucose Mimetic (GLUT1/3 Target)"
         if "ccc(=o)n)c(=o)o" in s or "ccc(=o)n" in s:
-            return "Glutamine Mimetic (SLC1A5 Trap)"
+            return "Glutamine Mimetic (SLC1A5 Target)"
         if "oc[c@h](o)[c@h]1oc(=o)c(o)=c1o" in s:
-            return "Ascorbic Acid Mimetic (SVCT2 Trap)"
+            return "Ascorbic Acid Mimetic (SVCT2 Target)"
         if "cc)c(=o)o" in s or "cc)c(=o)n" in s:
-            return "Amino Acid Mimetic (LAT1 Trap)"
-        return "Broad Metabolic Trojan"
+            return "Amino Acid Mimetic (LAT1 Target)"
+        return "Broad Metabolic Profile"
 
     def load_model(self, path: str):
         self.model.load_state_dict(torch.load(path, weights_only=True))

@@ -1,6 +1,6 @@
 """
 learner/cycle_manager.py
-Autonomous Discovery Loop — the brain of Neural-Nova v8.0 Sovereign.
+Autonomous Discovery Loop — the brain of Neural-Nova v8.5 Priority Discovery.
 
 Orchestrates: Data Harvest -> Target ID -> Generate -> Screen -> Report -> Learn -> Repeat
 """
@@ -32,6 +32,7 @@ from harvester.pdb_client import PDBClient
 from harvester.chembl_client import ChEMBLClient
 from harvester.pubmed_miner import PubMedMiner
 from harvester.clintrials_client import ClinicalTrialsClient
+from harvester.genomic_sequencer import GenomicSequencer
 from engine.target_identifier import TargetIdentifier
 from engine.molecule_generator import MoleculeGenerator
 from engine.virtual_screener import VirtualScreener, MoleculeProfile
@@ -51,6 +52,18 @@ RETRAIN_EVERY = 3
 CONVERGENCE_PATIENCE = 15
 CONVERGENCE_DELTA = 0.005
 
+# UniProt Mapping for top GBM targets
+UNIPROT_MAPPING = {
+    "EGFR": "P00533",
+    "IDH1": "O75874",
+    "mTOR": "P42345",
+    "PTEN": "P60484",
+    "PIK3CA": "P42336",
+    "VEGFA": "P15692",
+    "CDK4": "P11802",
+    "PDGFRA": "P16234",
+}
+
 
 # ── Autonomous Discovery Loop ───────────────────────────────
 
@@ -62,7 +75,7 @@ class DiscoveryEngine:
 
     def __init__(self):
         console.print(Panel.fit(
-            "[bold cyan]NEURAL-NOVA v8.0 Sovereign — Clinical Outcome Predictor[/bold cyan]\n"
+            "[bold cyan]NEURAL-NOVA v8.5 Priority — Autonomous Discovery Pipeline[/bold cyan]\n"
             "[dim]Autonomous GBM Drug Discovery Engine[/dim]\n"
             "[dim]Real data. Real chemistry. Self-improving.[/dim]",
             border_style="bright_blue", box=box.DOUBLE_EDGE
@@ -75,6 +88,7 @@ class DiscoveryEngine:
         self.chembl = ChEMBLClient()
         self.pubmed = PubMedMiner()
         self.clintrials = ClinicalTrialsClient()
+        self.sequencer = GenomicSequencer()
         self.reporter = ReportGenerator()
         self.memory = MemoryDB()
 
@@ -105,6 +119,13 @@ class DiscoveryEngine:
             mutations = self.tcga.fetch_mutations()
             drivers = self.tcga.get_gbm_driver_genes()
 
+            # Personalized genomics
+            progress.update(task, description="[cyan]Checking for personalized genomic data...")
+            personalized_vcf = list(Path("data/genomics/personalized").glob("*.vcf"))
+            personalized_mutations = []
+            for vcf in personalized_vcf:
+                personalized_mutations.extend(self.sequencer.parse_vcf(str(vcf)))
+
             # PDB structures
             progress.update(task, description="[cyan]Downloading protein structures...")
             self.pdb.download_all_targets()
@@ -129,6 +150,9 @@ class DiscoveryEngine:
 
         # Initialize engine components with real data
         self.target_id = TargetIdentifier(drivers)
+        if personalized_mutations:
+            self.target_id.ingest_personalized_vcf(personalized_mutations)
+            
         mutation_analysis = self.target_id.analyze_mutations(mutations)
         self.targets = self.target_id.get_top_targets(
             mutation_analysis, failures, top_k=8
@@ -205,8 +229,9 @@ class DiscoveryEngine:
 
         # Screen
         console.print(f"  [dim]Screening against {target['gene']}...[/dim]")
+        uniprot_id = UNIPROT_MAPPING.get(target["gene"], "")
         screened = self.screener.screen(
-            smiles_list, target=target["gene"], top_k=TOP_K_SCREEN
+            smiles_list, target=target["gene"], uniprot_id=uniprot_id, top_k=TOP_K_SCREEN
         )
         console.print(f"  [dim]Passed screening: {len(screened)} molecules[/dim]")
 
@@ -224,6 +249,12 @@ class DiscoveryEngine:
                 "bbb_penetration": mol.bbb_penetration,
                 "herg_risk": mol.herg_risk,
                 "metabolic_stability": mol.metabolic_stability,
+                "rmsd_stability": mol.rmsd_stability,
+                "persistence": mol.persistence,
+                "homo_lumo_gap": mol.homo_lumo_gap,
+                "electrophilicity": mol.electrophilicity,
+                "ph_adjusted_potency": mol.ph_adjusted_potency,
+                "hypoxic_efficacy": mol.hypoxic_efficacy,
                 "twin_efficacy": 0.0,
                 "twin_volume_reduction": 0.0,
                 "stage_reached": mol.stage_reached,
@@ -245,12 +276,21 @@ class DiscoveryEngine:
                 "passes_bbb": cand.passes_bbb,
                 "is_pains": cand.is_pains,
                 "docking_score": cand.docking_score,
+                "vina_score": cand.vina_score,
+                "smina_score": cand.smina_score,
+                "alphafold_confidence": cand.alphafold_confidence,
                 "similarity_to_known": cand.similarity_to_known,
                 "composite_score": cand.composite_score,
                 "bbb_penetration": cand.bbb_penetration,
                 "oral_bioavailability": cand.oral_bioavailability,
                 "metabolic_stability": cand.metabolic_stability,
                 "herg_risk": cand.herg_risk,
+                "rmsd_stability": cand.rmsd_stability,
+                "persistence": cand.persistence,
+                "homo_lumo_gap": cand.homo_lumo_gap,
+                "electrophilicity": cand.electrophilicity,
+                "ph_adjusted_potency": cand.ph_adjusted_potency,
+                "hypoxic_efficacy": cand.hypoxic_efficacy,
                 "selectivity_index": selectivity,
             }
             path = self.reporter.generate_candidate_report(cand_dict, cycle_id)
@@ -304,7 +344,8 @@ class DiscoveryEngine:
         t.add_column("hERG", style="bright_red", justify="right")
         for mol in top_mols:
             # We calculate a quick nova_score for display if not present
-            n_score = self.reporter.calculate_novascore(mol.docking_score, 0.5, mol.bbb_penetration, 1.0)
+            n_score_data = self.reporter.calculate_novascore(mol.docking_score, 0.5, mol.bbb_penetration, 1.0)
+            n_score = n_score_data["mean"]
             t.add_row(
                 mol.smiles[:33] + "...",
                 f"{n_score:.1f}/100",

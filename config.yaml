@@ -1,10 +1,10 @@
 # ─────────────────────────────────────────────────────────────
-# Neural-Nova v8.0 Sovereign — Autonomous GBM Eradication Engine
+# Neural-Nova v16.0 Apex Mankind — Multi-Scale Discovery Foundry
 # ─────────────────────────────────────────────────────────────
 
 project:
-  name: "Neural-Nova v8.0 Sovereign"
-  version: "8.0-stable"
+  name: "Neural-Nova Apex Mankind"
+  version: "16.0-apex"
   data_dir: "./data"
   reports_dir: "./reports"
   models_dir: "./models"
@@ -79,10 +79,10 @@ screener:
     lipinski: true
     veber: true
     pains: true
-    bbb_mw_max: 450
-    bbb_tpsa_max: 90
-    bbb_logp_range: [0.5, 4.0]
-    bbb_hbd_max: 3
+    bbb_mw_max: 400
+    bbb_tpsa_max: 70
+    bbb_logp_range: [1.0, 4.0]
+    bbb_hbd_max: 2
 
   docking:
     tool: "vina"                # AutoDock Vina
@@ -115,9 +115,9 @@ generator:
     batch_size: 64
   fragment:
     known_scaffolds:
-      - "O=c1[nH]c(=O)n(C)c1N"          # temozolomide core
-      - "c1ccc(NC(=O)c2ccccn2)cc1"       # kinase inhibitor scaffold
-      - "c1ccc(-c2cc3ccccc3o2)cc1"        # benzofuran scaffold
+      - "Cc1cnc(Nc2ccccc2)nc1"       # CNS-druglike Kinase Fragment
+      - "c1cc(N)cnc1C(=O)N"          # Aminopyridine Core
+      - "O=c1[nH]c(=O)n(C)c1N"        # temozolomide core (Reduced)
     max_modifications: 5
 
 # ── Digital Twin ───────────────────────────────────────────

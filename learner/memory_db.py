@@ -42,6 +42,13 @@ class MemoryDB:
                 bbb_penetration REAL,
                 herg_risk REAL,
                 metabolic_stability REAL,
+                -- GBM Realism
+                rmsd_stability REAL,
+                persistence REAL,
+                homo_lumo_gap REAL,
+                electrophilicity REAL,
+                ph_adjusted_potency REAL,
+                hypoxic_efficacy REAL,
                 -- Twin
                 twin_efficacy REAL,
                 twin_volume_reduction REAL,
@@ -109,6 +116,8 @@ class MemoryDB:
                     mw, logp, hbd, hba, tpsa,
                     passes_bbb, docking_score, composite_score,
                     bbb_penetration, herg_risk, metabolic_stability,
+                    rmsd_stability, persistence, homo_lumo_gap,
+                    electrophilicity, ph_adjusted_potency, hypoxic_efficacy,
                     twin_efficacy, twin_volume_reduction,
                     stage_reached, rejection_reason
                 ) VALUES (
@@ -116,6 +125,8 @@ class MemoryDB:
                     :mw, :logp, :hbd, :hba, :tpsa,
                     :passes_bbb, :docking_score, :composite_score,
                     :bbb_penetration, :herg_risk, :metabolic_stability,
+                    :rmsd_stability, :persistence, :homo_lumo_gap,
+                    :electrophilicity, :ph_adjusted_potency, :hypoxic_efficacy,
                     :twin_efficacy, :twin_volume_reduction,
                     :stage_reached, :rejection_reason
                 )
