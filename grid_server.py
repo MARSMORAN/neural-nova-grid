@@ -4,6 +4,7 @@ import json
 import sqlite3
 import uvicorn
 import logging
+import argparse
 from pathlib import Path
 from datetime import datetime
 from fastapi import FastAPI, HTTPException, Request
@@ -16,24 +17,30 @@ from fastapi.staticfiles import StaticFiles
 # Apex Mankind v32.0 - Mothership Core
 app = FastAPI(title="Neural-Nova APEX MOTHERSHIP v32.0")
 
-# --- PERSISTENT STORAGE CONFIGURATION ---
+# --- STORAGE CONFIGURATION ---
+# If in Colab, use Google Drive. If local, use the current directory.
 IS_COLAB = "google.colab" in sys.modules or os.path.exists("/content")
 BASE_DIR = Path("/content/drive/MyDrive/neural_nova_v32") if IS_COLAB else Path(".")
 DB_FILE = str(BASE_DIR / "grid_memory.db")
 REPORTS_DIR = BASE_DIR / "reports"
 ELITE_DIR = BASE_DIR / "top_10_elite"
 
-if IS_COLAB:
-    print(f"[*] COLAB DETECTED. Ensuring Google Drive persistent storage at: {BASE_DIR}")
-    try:
-        from google.colab import drive
-        if not os.path.exists("/content/drive"):
-            drive.mount('/content/drive')
-        BASE_DIR.mkdir(parents=True, exist_ok=True)
-        REPORTS_DIR.mkdir(parents=True, exist_ok=True)
-        ELITE_DIR.mkdir(parents=True, exist_ok=True)
-    except Exception as e:
-        print(f"[!] Warning: Could not mount Google Drive. Using local storage: {e}")
+def setup_storage():
+    if IS_COLAB:
+        print(f"[*] COLAB DETECTED. Ensuring Google Drive persistent storage at: {BASE_DIR}")
+        try:
+            from google.colab import drive
+            if not os.path.exists("/content/drive"):
+                drive.mount('/content/drive')
+        except Exception as e:
+            print(f"[!] Warning: Could not mount Google Drive: {e}")
+    
+    BASE_DIR.mkdir(parents=True, exist_ok=True)
+    REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    ELITE_DIR.mkdir(parents=True, exist_ok=True)
+    print(f"[*] DATA STORAGE ACTIVE: {BASE_DIR.absolute()}")
+
+setup_storage()
 
 # Setup Logging
 logging.basicConfig(level=logging.INFO)
@@ -344,5 +351,25 @@ def download_report(subpath: str):
     return FileResponse(report_file)
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Neural-Nova APEX MOTHERSHIP v32.0")
+    parser.add_argument("--use-ngrok", action="store_true", help="Start a public tunnel using Ngrok")
+    parser.add_argument("--token", type=str, help="Your Ngrok Auth Token")
+    args = parser.parse_args()
+
+    if args.use_ngrok:
+        try:
+            from pyngrok import ngrok
+            if args.token:
+                ngrok.set_auth_token(args.token)
+            
+            # Start Tunnel
+            public_url = ngrok.connect(8000).public_url
+            print("\n" + "="*70)
+            print(f"[!!!] MOTHERSHIP PUBLIC URL: {public_url}")
+            print(f"[!!!] Share this URL with your Cloud Drone Swarm.")
+            print("="*70 + "\n")
+        except Exception as e:
+            logger.error(f"Failed to initialize Ngrok tunnel: {e}")
+
     logger.info("INITIATING NEURAL-NOVA APEX MOTHERSHIP v32.0")
     uvicorn.run(app, host="0.0.0.0", port=8000, log_level="warning")
