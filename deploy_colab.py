@@ -9,37 +9,53 @@ COLAB_CODE = r'''
 MODE = "Drone" #@param ["Mothership", "Drone"]
 NGROK_TOKEN = "" #@param {type:"string"}
 BRAIN_URL = "" #@param {type:"string"}
+TARGET_QUEUE_SIZE = 1000000 #@param {type:"number"}
 
 import os
 from google.colab import drive
 
+REPO_URL = "https://raw.githubusercontent.com/MARSMORAN/neural-nova-grid/main"
+
+def fetch_apex_stack():
+    print("[*] Fetching Apex Mankind v32.0 Scientific Stack...")
+    files = [
+        "grid_server.py", "generate_massive_queue.py", "colab_worker_payload.py",
+        "engine/report_generator.py", "engine/molecule_generator.py", 
+        "engine/polypharmacology.py", "engine/bbb_kinetics.py",
+        "engine/molecular_dynamics.py", "engine/quantum_mechanics.py",
+        "engine/tumor_microenvironment.py", "engine/pathway_simulator.py",
+        "engine/digital_twin.py", "engine/genomic_profiler.py",
+        "engine/combination_engine.py", "engine/pkpd_model.py",
+        "engine/nanoparticle_designer.py", "engine/virtual_screener.py",
+        "harvester/alphafold_client.py"
+    ]
+    for f in files:
+        dir_name = os.path.dirname(f)
+        if dir_name: os.makedirs(dir_name, exist_ok=True)
+        os.system(f"wget -q {REPO_URL}/{f} -O {f}")
+
 def setup_mothership():
-    print("[*] Initializing Apex Mankind v32.0 Mothership (Mission Control)...")
+    print("[*] Initializing Apex Mankind v32.0 Mothership (Total Cloud Autonomy)...")
     
-    # Persistent Storage Sync
+    # 1. Persistent Storage Sync
     if not os.path.exists("/content/drive"):
         drive.mount('/content/drive')
     
-    !pip install fastapi uvicorn pyngrok rdkit-pypi numpy reportlab -q
+    # 2. Dependencies
+    !pip install fastapi uvicorn pyngrok rdkit-pypi numpy reportlab torch -q
+    
+    # 3. Fetch Code
+    fetch_apex_stack()
+    
+    # 4. Check/Initialize Massive Queue
+    db_path = "/content/drive/MyDrive/neural_nova_v32/grid_memory.db"
+    if not os.path.exists(db_path):
+        print(f"[!] Database not found on Drive. Synthesizing {TARGET_QUEUE_SIZE:,} molecule search space...")
+        !python generate_massive_queue.py --target {TARGET_QUEUE_SIZE}
+    else:
+        print("[+] Existing persistent database detected. Resuming campaign.")
 
-    # Download Core Files (Apex v32.0 Stack)
-    !mkdir -p engine harvester reports/apex_v32_breakthroughs targets
-    # (Simplified for single-cell run - assumes repo is cloned or files are fetched)
-    !wget -q https://raw.githubusercontent.com/user/repo/main/grid_server.py -O grid_server.py
-    !wget -q https://raw.githubusercontent.com/user/repo/main/engine/report_generator.py -O engine/report_generator.py
-    !wget -q https://raw.githubusercontent.com/user/repo/main/engine/molecule_generator.py -O engine/molecule_generator.py
-    !wget -q https://raw.githubusercontent.com/user/repo/main/engine/polypharmacology.py -O engine/polypharmacology.py
-    !wget -q https://raw.githubusercontent.com/user/repo/main/engine/bbb_kinetics.py -O engine/bbb_kinetics.py
-    !wget -q https://raw.githubusercontent.com/user/repo/main/engine/molecular_dynamics.py -O engine/molecular_dynamics.py
-    !wget -q https://raw.githubusercontent.com/user/repo/main/engine/quantum_mechanics.py -O engine/quantum_mechanics.py
-    !wget -q https://raw.githubusercontent.com/user/repo/main/engine/tumor_microenvironment.py -O engine/tumor_microenvironment.py
-    !wget -q https://raw.githubusercontent.com/user/repo/main/engine/pathway_simulator.py -O engine/pathway_simulator.py
-    !wget -q https://raw.githubusercontent.com/user/repo/main/engine/digital_twin.py -O engine/digital_twin.py
-    !wget -q https://raw.githubusercontent.com/user/repo/main/engine/genomic_profiler.py -O engine/genomic_profiler.py
-    !wget -q https://raw.githubusercontent.com/user/repo/main/engine/combination_engine.py -O engine/combination_engine.py
-    !wget -q https://raw.githubusercontent.com/user/repo/main/engine/pkpd_model.py -O engine/pkpd_model.py
-    !wget -q https://raw.githubusercontent.com/user/repo/main/engine/nanoparticle_designer.py -O engine/nanoparticle_designer.py
-
+    # 5. Launch Mission Control
     from pyngrok import ngrok
     if NGROK_TOKEN:
         ngrok.set_auth_token(NGROK_TOKEN)
@@ -53,9 +69,10 @@ def setup_mothership():
 def setup_drone():
     print("[*] Deploying Apex v32.0 Autonomous Drone (Distributed Node)...")
     os.environ['BRAIN_URL'] = BRAIN_URL
-    !pip install rdkit-pypi numpy -q
-    !wget -q https://raw.githubusercontent.com/user/repo/main/colab_worker_payload.py -O worker.py
-    # Node download target ensemble conformations handled in worker.setup_env()
+    !pip install rdkit-pypi numpy torch -q
+    fetch_apex_stack()
+    # Rename worker payload for execution
+    os.rename("colab_worker_payload.py", "worker.py")
     !python worker.py
 '''
 
